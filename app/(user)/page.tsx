@@ -2,14 +2,14 @@ import { previewData } from "next/headers";
 import { groq } from "next-sanity";
 import { client } from "../../lib/sanity.client";
 import PreviewSuspense from "../../components/PreviewSuspense";
-import ProductList from "../../components/CommerceList";
+import CommerceList from "../../components/CommerceList";
 import PreviewCommerceList from "../../components/PreviewCommerceList";
 
 const query = groq`
-*[_type=='product']{
+*[_type == 'product']{
   ...,
-  product_name->,
-  details[]->
+  name,
+  category[]->
 } | order(_createdAt desc)
 `;
 
@@ -31,7 +31,5 @@ export default async function HomePage() {
   }
 
   const products = await client.fetch(query);
-  //console.log(products);
-
-  return <ProductList products={products} />;
+  return <CommerceList products={products} />;
 }
