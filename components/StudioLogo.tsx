@@ -11,6 +11,8 @@ function StudioLogo(props: any) {
         width={50}
         src={logo}
         alt="logo"
+        loading="eager"
+        priority={true}
       ></Image>
 
       <>{renderDefault(props)}</>

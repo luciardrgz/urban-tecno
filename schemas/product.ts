@@ -1,33 +1,53 @@
-export default {
+import { defineField, defineType } from "sanity";
+
+export default defineType({
   name: "product",
   title: "Productos",
   type: "document",
   fields: [
-    {
-      name: "product_name",
-      title: "Nombre del Producto",
+    defineField({
+      name: "name",
+      title: "Nombre del producto",
       type: "string",
-    },
-    {
+    }),
+    defineField({
+      name: "brand",
+      title: "Marca",
+      type: "array",
+      of: [{ type: "reference", to: { type: "brand" } }],
+    }),
+    defineField({
+      name: "category",
+      title: "Categoria",
+      type: "array",
+      of: [{ type: "reference", to: { type: "category" } }],
+    }),
+    defineField({
+      name: "details",
+      description: "Breve fragmento para la tienda...",
+      title: "Detalles",
+      type: "string",
+    }),
+    defineField({
+      name: "origin",
+      title: "Pais de origen",
+      type: "reference",
+      to: [{ type: "origin" }],
+    }),
+    defineField({
       name: "image",
       title: "Foto",
-      type: "array",
-      of: [{ type: "image" }],
+      type: "image",
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: "details",
-      title: "Detalles",
-      type: "string",
-    },
-    {
+    }),
+    defineField({
       name: "price",
       title: "Precio",
       type: "number",
-    },
-    {
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
@@ -35,6 +55,6 @@ export default {
         source: "name",
         maxLength: 90,
       },
-    },
+    }),
   ],
-};
+});

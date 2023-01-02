@@ -11,6 +11,8 @@ function Banner() {
           width={150}
           src={logo}
           alt="logo"
+          loading="eager"
+          priority={true}
         ></Image>
         <h2 className="font-hanken font-normal mt-5 md:mt-0">
           Venta de equipos electrónicos / Servicio Técnico
