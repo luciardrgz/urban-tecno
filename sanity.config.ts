@@ -5,9 +5,10 @@ import { schemaTypes } from "./schemas";
 import { myTheme } from "./theme";
 import StudioNavbar from "./components/StudioNavbar";
 import StudioLogo from "./components/StudioLogo";
+import { getDefaultDocumentNode } from "./structure";
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string;
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET as string;
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 
 export default defineConfig({
   basePath: "/studio",
@@ -17,7 +18,10 @@ export default defineConfig({
   projectId,
   dataset,
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [
+    deskTool({ defaultDocumentNode: getDefaultDocumentNode }),
+    visionTool(),
+  ],
 
   schema: {
     types: schemaTypes,
