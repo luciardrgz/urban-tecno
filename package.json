@@ -10,11 +10,13 @@
     "@portabletext/react": "^2.0.0",
     "@sanity/image-url": "^1.0.1",
     "@sanity/vision": "^3.0.0",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "next": "latest",
     "next-sanity": "^3.1.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sanity": "^3.0.0",
+    "sanity-plugin-iframe-pane": "^2.1.1",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
