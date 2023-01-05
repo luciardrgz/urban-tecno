@@ -9,9 +9,11 @@ const query = groq`
 *[_type == 'product']{
   ...,
   name,
-  category[]->
+  category->{name}
 } | order(_createdAt desc)
 `;
+
+export const revalidate = 30; // revalidate this page every 60 seconds
 
 export default async function HomePage() {
   if (previewData()) {
