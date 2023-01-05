@@ -21,14 +21,25 @@ interface Image {
   asset: Reference;
 }
 
+interface Block {
+  _key: string;
+  _type: "block";
+  children: Span[];
+  markDefs: any[];
+  style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+}
+
 interface Product extends Base {
   name: string;
-  brand: Brand[];
-  categories: Category[];
+  slug: Slug;
+  brand: Brand;
+  category: Category;
   details: string;
+  info: Block[];
+  origin: Country;
+  colors: Color[];
   image: Image;
   price: number;
-  slug: Slug;
 }
 
 interface Category extends Base {
@@ -46,4 +57,9 @@ interface Brand extends Base {
 interface Country extends Base {
   name: string;
   slug: Slug;
+}
+
+interface Color extends Base {
+  name: string;
+  image: Image;
 }
