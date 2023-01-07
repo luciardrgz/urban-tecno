@@ -1,5 +1,4 @@
-import Header from "../../components/Header";
-import Banner from "../../components/Banner";
+import Navbar from "../../components/Navbar";
 import "../../styles/globals.css";
 
 export default function RootLayout({
@@ -9,9 +8,8 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className="bg-[#202020] max-w-7xl mx-auto">
-        <Header />
-        <Banner />
+      <body className="bg-[#1a1a1a] max-w-7xl mx-auto">
+        <Navbar />
         {children}
       </body>
     </html>
