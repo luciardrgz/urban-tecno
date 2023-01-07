@@ -1,6 +1,5 @@
 import Image from "next/image";
 import urlFor from "../lib/urlFor";
-import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 import ClientSideRoute from "./ClientSideRoute";
 
 // Principal
@@ -16,11 +15,11 @@ function CommerceList({ products }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
         {products.map((product) => (
           <ClientSideRoute
-            route={`/product/${product.slug?.current}`}
+            route={`/product/slug/${product.slug.current}`}
             key={product._id}
           >
             <div className="flex flex-col group cursor-pointer">
-              <div className="relative w-full h-80 drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
+              <div className="z-2 relative w-full h-80 drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
                 {product.image && (
                   <Image
                     className="object-cover object-left lg:object-center"
