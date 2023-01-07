@@ -11,16 +11,25 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "name",
+        maxLength: 96,
+      },
+    }),
+    defineField({
       name: "brand",
       title: "Marca",
-      type: "array",
-      of: [{ type: "reference", to: { type: "brand" } }],
+      type: "reference",
+      to: [{ type: "brand" }],
     }),
     defineField({
       name: "category",
       title: "Categoria",
-      type: "array",
-      of: [{ type: "reference", to: { type: "category" } }],
+      type: "reference", //,
+      to: [{ type: "category" }],
     }),
     defineField({
       name: "details",
@@ -29,10 +38,31 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "info",
+      title: "Información extra",
+      type: "blockContent",
+    }),
+    defineField({
+      name: "weight",
+      title: "Peso",
+      type: "number",
+    }),
+    defineField({
+      name: "dimensions",
+      title: "Dimensiones",
+      type: "string",
+    }),
+    defineField({
       name: "origin",
       title: "Pais de origen",
       type: "reference",
       to: [{ type: "origin" }],
+    }),
+    defineField({
+      name: "colors",
+      title: "Colores",
+      type: "array",
+      of: [{ type: "reference", to: { type: "color" } }],
     }),
     defineField({
       name: "image",
@@ -46,15 +76,6 @@ export default defineType({
       name: "price",
       title: "Precio",
       type: "number",
-    }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "name",
-        maxLength: 90,
-      },
     }),
   ],
 });
