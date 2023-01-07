@@ -43,6 +43,16 @@ export default defineType({
       type: "blockContent",
     }),
     defineField({
+      name: "weight",
+      title: "Peso",
+      type: "number",
+    }),
+    defineField({
+      name: "dimensions",
+      title: "Dimensiones",
+      type: "string",
+    }),
+    defineField({
       name: "origin",
       title: "Pais de origen",
       type: "reference",
