@@ -29,6 +29,7 @@ interface Block {
   style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
 }
 
+// TODO: Array de imagenes
 interface Product extends Base {
   name: string;
   slug: Slug;
@@ -36,6 +37,8 @@ interface Product extends Base {
   category: Category;
   details: string;
   info: Block[];
+  weight: number;
+  dimensions: string;
   origin: Country;
   colors: Color[];
   image: Image;
