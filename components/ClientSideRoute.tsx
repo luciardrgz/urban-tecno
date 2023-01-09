@@ -8,7 +8,11 @@ function ClientSideRoute({
   children: React.ReactNode;
   route: string;
 }) {
-  return <Link href={route}>{children}</Link>;
+  return (
+    <Link href={route} className="hover:no-underline ">
+      {children}
+    </Link>
+  );
 }
 
 export default ClientSideRoute;
