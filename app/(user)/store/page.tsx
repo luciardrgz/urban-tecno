@@ -2,8 +2,8 @@ import { previewData } from "next/headers";
 import { groq } from "next-sanity";
 import { client } from "../../../lib/sanity.client";
 import PreviewSuspense from "../../../components/PreviewSuspense";
-import CommerceList from "../../../components/CommerceList";
-import PreviewCommerceList from "../../../components/PreviewCommerceList";
+import PreviewStore from "../../../components/PreviewStore";
+import Store from "../../../components/Store";
 
 const query = groq`
 *[_type == 'product']{
@@ -15,7 +15,7 @@ const query = groq`
 
 export const revalidate = 30; // revalidate this page every 60 seconds
 
-export default async function Store() {
+export default async function StoreList() {
   if (previewData()) {
     return (
       <PreviewSuspense
@@ -27,11 +27,11 @@ export default async function Store() {
           </div>
         }
       >
-        <PreviewCommerceList query={query} />
+        <PreviewStore query={query} />
       </PreviewSuspense>
     );
   }
 
   const products = await client.fetch(query);
-  return <CommerceList products={products} />;
+  return <Store products={products} />;
 }
