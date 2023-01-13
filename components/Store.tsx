@@ -1,51 +1,17 @@
-import { groq } from "next-sanity";
-import { client } from "../../../../../lib/sanity.client";
-import urlFor from "../../../../../lib/urlFor";
+import Image from "next/image";
+import urlFor from "../lib/urlFor";
+import ClientSideRoute from "./ClientSideRoute";
 
 type Props = {
-  params: {
-    category: string;
-  };
+  products: Product[];
 };
 
-export const revalidate = 30; // revalidate this page every 30 seconds
-
-export async function generateStaticParams() {
-  const query = groq`
-		*[_type == "product"]
-		{
-			category->{name}
-		}
-		`;
-
-  const categories: Product[] = await client.fetch(query);
-
-  const categoryRoutes = categories.map((category) => category.category.name);
-
-  return categoryRoutes.map((category) => ({
-    category,
-  }));
-}
-
-async function Product({ params: { category } }: Props) {
-  const query = groq`
-		*[_type == "product" && category->name == $category]{
-      ...,
-      name,
-      category->{name},
-      brand->,
-      origin->,
-      colors[]->
-    }
-	`;
-
-  const products: Product[] = await client.fetch(query, { category });
-
+function Store({ products }: Props) {
   return (
     <section className="text-gray-400 body-font">
       <div className="container px-5 mx-auto">
-        <h2 className="text-center text-xl font-bold sm:text-3xl mb-10 text-[#b4a07c]">
-          {category}
+        <h2 className="text-center text-xl font-bold sm:text-3xl mb-10 text-white">
+          Todos nuestros productos
         </h2>
 
         <div className="flex flex-wrap -m-4">
@@ -54,7 +20,7 @@ async function Product({ params: { category } }: Props) {
               <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
                 <a
                   className="block relative h-48 rounded overflow-hidden text-gray-300 hover:no-underline hover:text-[#b4a07c]"
-                  href={`/product/slug${product.slug.current}`}
+                  href={`/product/slug/${product.slug.current}`}
                 >
                   {product.image && product.image ? (
                     <img
@@ -84,4 +50,4 @@ async function Product({ params: { category } }: Props) {
   );
 }
 
-export default Product;
+export default Store;

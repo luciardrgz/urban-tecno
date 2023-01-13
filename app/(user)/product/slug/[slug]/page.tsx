@@ -2,15 +2,8 @@ import { groq } from "next-sanity";
 import Image from "next/image";
 import { client } from "../../../../../lib/sanity.client";
 import urlFor from "../../../../../lib/urlFor";
-import { PortableText } from "@portabletext/react";
-import { RichTextComponents } from "../../../../../components/RichTextComponent";
 import { Fragment, ReactElement } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGlobe,
-  faWeightHanging,
-  faRulerCombined,
-} from "@fortawesome/free-solid-svg-icons";
+import color from "../../../../../schemas/color";
 
 type Props = {
   params: {
@@ -51,102 +44,66 @@ async function Product({ params: { slug } }: Props) {
   const product: Product = await client.fetch(query, { slug });
 
   return (
-    <Fragment>
-      <div className="py-16 pr-[2em] pl-[2em] bg-black lg:text-left">
-        <div className="container">
-          <div className="row lg:flex lg:justify-center">
-            <div className="col static w-full mb-7 md:w-6/12 lg:w-[35em] lg:h-[35em] lg:mr-[1em]">
-              {product.image && (
-                <Image
-                  src={urlFor(product.image).url()}
-                  alt={product.name}
-                  width={560}
-                  height={560}
-                  loading="eager"
-                  priority={true}
-                />
-              )}
-            </div>
-
-            <div className="col static md:w-6/12 lg:w-[38em] lg:text-left">
-              <p className="text-white">${product.price}</p>
-              <h1 className="text-white text-4xl">{product.name}</h1>
-              <hr className="h-px my-8 bg-[#b4a07c] border-0" />
-              <p className="text-left text-primary-50 text-[#b4a07c]">
-                Detalles
+    <section className="text-gray-600 body-font overflow-hidden">
+      <div className="container px-5 py-24 mx-auto">
+        {product && (
+          <div className="lg:w-4/5 mx-auto flex flex-wrap">
+            {product.image && product.image ? (
+              <img
+                className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                src={urlFor(product.image).url()}
+                alt={product.name}
+              />
+            ) : (
+              <p className="text-lg lg:w-1/2 w-full lg:h-auto h-64 text-center rounded">
+                Imagen no disponible
               </p>
-              <p className="text-white text-left text-primary-50">
-                Toda la descripcion
-              </p>
-              <hr className="h-px my-8 bg-[#b4a07c] border-0" />
-              <p className="-mb-1 text-left text-primary text-[#b4a07c]">
-                Marca
-              </p>
-              <p className="text-white text-left text-primary-50 ">
+            )}
+            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+              <h2 className="text-sm title-font text-gray-500 tracking-widest">
                 {product.brand.name}
-              </p>
-              <hr className="h-px my-8 bg-[#b4a07c] border-0" />
-              {product.colors && (
-                <p className="mb-2 text-left text-primary text-[#b4a07c]">
-                  Colores
-                </p>
-              )}
+              </h2>
+              <h1 className="text-[#b4a07c] text-3xl title-font font-medium mb-1">
+                {product.name}
+              </h1>
 
-              {product.colors && (
-                <div className="inline-flex flex-row justify-start items-start gap-x-[1em] gap-y-3 mx-auto -mb-9 ml-[auto] md:flex-row">
-                  {product.colors?.map((color) => (
-                    <Image
-                      src={urlFor(color.image).url()}
-                      alt={color.name}
-                      width={32}
-                      height={32}
-                      loading="eager"
-                      priority={true}
-                    />
-                  ))}
+              <div className="flex mt-6 items-center pb-5 border-b-2 border-[#b4a07c] mb-5">
+                <div className="flex">
+                  <span className="mr-3">Colores disponibles</span>
+                  {product.colors &&
+                    product.colors.map((color) => (
+                      <>
+                        <input
+                          type="image"
+                          src={urlFor(color.image).url()}
+                          className="border-2 border-white ml-1  rounded-full w-6 h-6 focus:outline-none"
+                          name={color.name}
+                          alt={color.name}
+                        />
+                      </>
+                    ))}
                 </div>
-              )}
+              </div>
+
+              <div className="flex mt-6 items-center pb-5 border-b-2 border-[#b4a07c] mb-5">
+                <div className="flex">
+                  <span className="mr-3">{product.details}</span>
+                </div>
+              </div>
+
+              <div className="flex">
+                <span className="title-font font-medium text-2xl text-white">
+                  $58.00
+                </span>
+                <button className="flex ml-auto text-black bg-[#b4a07c] border-0 py-2 px-6 focus:outline-none hover:bg-[#c7b189] rounded">
+                  Enviar WhatsApp
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
-
-      <div className="static py-28 text-center bg-black lg:static">
-        <div className="container">
-          <div className="row justify-center md:text-center lg:flex lg:items-center">
-            <div className="col md:w-3/12">
-              <FontAwesomeIcon
-                icon={faGlobe}
-                color="#b4a07c"
-                width={"2em"}
-              ></FontAwesomeIcon>
-              <h3 className="mb-3 text-2xl text-[#b4a07c]">Origen</h3>
-              <p className="text-white">pais de origen</p>
-            </div>
-
-            <div className="col md:w-3/12">
-              <FontAwesomeIcon
-                icon={faWeightHanging}
-                color="#b4a07c"
-                width={"2em"}
-              ></FontAwesomeIcon>
-              <h3 className="mb-3 text-2xl text-[#b4a07c]">Peso</h3>
-              <p className="text-white">el peso del prod</p>
-            </div>
-
-            <div className="col md:w-3/12">
-              <FontAwesomeIcon
-                icon={faRulerCombined}
-                color="#b4a07c"
-                width={"2em"}
-              ></FontAwesomeIcon>
-              <h3 className="mb-3 text-2xl text-[#b4a07c]">Dimensiones</h3>
-              <p className="text-white">dimensiones del prod</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Fragment>
+    </section>
   );
 }
 

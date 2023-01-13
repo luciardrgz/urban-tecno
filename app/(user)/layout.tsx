@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className="bg-[#1a1a1a] max-w-7xl mx-auto">
+      <body className="bg-[#161616] max-w-full mx-auto">
         <Navbar />
         {children}
       </body>
