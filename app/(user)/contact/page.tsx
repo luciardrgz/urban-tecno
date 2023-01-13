@@ -5,16 +5,15 @@ import {
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import "../../../components/CompanyName.css";
 
 function Contact() {
   return (
     <div className="container px-6 py-5 mx-auto">
-      <hr className="border-[#b4a07c] mb-10" />
       <h1 className="text-3xl font-semibold text-center text-white  lg:text-4xl ">
         Contactate con
-        <span className="text-[#b4a07c]"> Full Tecno</span>
       </h1>
-
+      <h1 className="glow"> Full Tecno</h1>
       <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
         <div className="flex flex-col h-60 items-center p-6 space-y-3 text-center bg-black rounded-xl">
           <span className="inline-block p-2 rounded-full text-black bg-[#b4a07c]">
