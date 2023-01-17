@@ -9,6 +9,7 @@ import { groq } from "next-sanity";
 import { client } from "../lib/sanity.client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import "./Navbar.css";
 
 const Navbar: React.FC = () => {
   const [brands, setBrands] = useState<string[]>();
@@ -43,46 +44,38 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navigationView = (
-    <ul className="flex flex-col items-center p-4 gap-5 mt-4 md:flex-row md:mt-0 bg-[#1a1a1a]">
-      <li>
-        <ClientSideRoute route={`http://localhost:3000/`}>
-          <li className="text-white hover:text-[#b4a07c]">Inicio</li>
-        </ClientSideRoute>
-      </li>
-
-      <li key={"store-dropdown"}>
+    <ul className="flex flex-col items-center p-4 gap-5 mt-4 -mb-1 md:flex-row md:mt-0 text-white font-semibold">
+      <li className="bg-[#b4a07c] rounded-md border-0" key={"store"}>
         <Dropdown
           title="Tienda"
-          className="rounded-md border-0 shadow-sm p-0.2 bg-[#b4a07c] text-black"
-          key={"tienda"}
+          className="rounded-md border-0 shadow-sm p-0.2 bg-[#b4a07c] text-black font-semibold"
         >
-          <Dropdown.Item className="bg-[#b4a07c] hover:bg-[#cdb78e] text-[#5f5542] hover:text-black">
+          <Dropdown.Item className="bg-[#b4a07c] hover:bg-[#cdb78e] text-[#5f5542] hover:text-black font-semibold">
             <ClientSideRoute route={`http://localhost:3000/store`}>
               Ver todo
             </ClientSideRoute>
           </Dropdown.Item>
-
           <Dropdown.Menu
             title="Marcas"
-            className="bg-[#b4a07c] text-[#5f5542] hover:text-black"
+            className="bg-[#b4a07c] text-[#5f5542] hover:text-black font-semibold"
+            key={"brands"}
           >
             {brands && brands.length
               ? brands.map((brand) => (
                   <Dropdown.Item className="hover:bg-[#cdb78e] text-[#5f5542] hover:text-black">
-                    {generateAnchor(true, "brand/", brand)}
+                    {generateAnchor("brand/", brand)}
                   </Dropdown.Item>
                 ))
               : null}
           </Dropdown.Menu>
-
           <Dropdown.Menu
             title="Categorías"
-            className="bg-[#b4a07c] text-[#5f5542] hover:text-black"
+            className="bg-[#b4a07c] text-[#5f5542] hover:text-black font-semibold"
           >
             {categories && categories.length
               ? categories.map((category) => (
                   <Dropdown.Item className="hover:bg-[#cdb78e] text-[#5f5542] hover:text-black">
-                    {generateAnchor(true, "category/", category)}
+                    {generateAnchor("category/", category)}
                   </Dropdown.Item>
                 ))
               : null}
@@ -90,9 +83,15 @@ const Navbar: React.FC = () => {
         </Dropdown>
       </li>
 
-      <li>
+      <li key={"home"}>
+        <ClientSideRoute route={`http://localhost:3000/`}>
+          <p className="nav-item">Inicio</p>
+        </ClientSideRoute>
+      </li>
+
+      <li key={"contact"}>
         <ClientSideRoute route={`http://localhost:3000/contact`}>
-          <li className="text-white hover:text-[#b4a07c]">Contacto</li>
+          <p className="nav-item">Contacto</p>
         </ClientSideRoute>
       </li>
     </ul>
@@ -101,13 +100,8 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className={"px-2 bg-[#1a1a1a]"} id="navbar-dropdown">
-      <div
-        className={
-          "container flex flex-wrap items-center justify-between mx-auto"
-        }
-        key={"navbar"}
-      >
+    <nav className="navbar" id="navbar-dropdown">
+      <div className={"container flex flex-wrap items-center justify-between"}>
         <Image
           className={"object-cover p-2"}
           height={50}
@@ -151,7 +145,7 @@ const Navbar: React.FC = () => {
 
 export default Navbar;
 
-function generateAnchor(status: boolean, subpath: string, info: string) {
+function generateAnchor(subpath: string, info: string) {
   return (
     <a
       href={`/product/${subpath}/${info}`}

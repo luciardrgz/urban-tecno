@@ -63,7 +63,9 @@ async function Product({ params: { category } }: Props) {
                       src={urlFor(product.image).url()}
                     />
                   ) : (
-                    <p className="mt-20 ml-20">Toca para ver más</p>
+                    <p className="py-20 w-full h-full block border-2 border-[#463f31] text-[#463f31] font-semibold hover:text-[#b4a07c]">
+                      Toca para ver más
+                    </p>
                   )}
                 </a>
 

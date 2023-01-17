@@ -95,7 +95,7 @@ async function Product({ params: { slug } }: Props) {
                 <span className="title-font font-medium text-2xl text-white">
                   $58.00
                 </span>
-                <button className="flex ml-auto text-black bg-[#b4a07c] border-0 py-2 px-6 focus:outline-none hover:bg-[#c7b189] rounded">
+                <button className="flex ml-auto text-black bg-[#b4a07c] border-0 py-2 px-6 focus:outline-none hover:bg-[#c7b189] rounded transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
                   Enviar WhatsApp
                 </button>
               </div>

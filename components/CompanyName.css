@@ -1,5 +1,6 @@
 .glow {
   font-size: 40px;
+  font-weight: bold;
   color: #fff;
   text-align: center;
   -webkit-animation: glow 1s ease-in-out infinite alternate;

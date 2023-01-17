@@ -11,7 +11,7 @@ function Hero() {
   return (
     <div className="px-4 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 mb-8">
       <div className="max-w-xl mb-10 sm:mx-auto">
-        <h2 className="text-center text-lg mb-5">Bienvenido a</h2>
+        <h2 className="text-center text-lg mb-5 font-semibold">Bienvenido a</h2>
         <h2 className="glow">Full Tecno</h2>
       </div>
       <div className="pt-10 grid gap-12 row-gap-8 lg:grid-cols-3">
@@ -27,9 +27,9 @@ function Hero() {
             </div>
           </div>
           <div>
-            <h6 className="mb-1 font-semibold leading-5 text-xl text-[#b4a07c]">
+            <h2 className="mb-1 font-semibold leading-5 text-xl text-[#b4a07c]">
               Venta de equipos electrónicos
-            </h6>
+            </h2>
             <p className="text-lg text-white">Al mejor precio del mercado</p>
           </div>
         </div>
@@ -45,9 +45,9 @@ function Hero() {
             </div>
           </div>
           <div>
-            <h6 className="mb-1 font-semibold leading-5 text-xl text-[#b4a07c]">
+            <h2 className="mb-1 font-semibold leading-5 text-xl text-[#b4a07c]">
               Servicio técnico de calidad
-            </h6>
+            </h2>
             <p className="text-lg text-white">A precios accesibles</p>
           </div>
         </div>
@@ -63,12 +63,10 @@ function Hero() {
             </div>
           </div>
           <div>
-            <h6 className="mb-1 font-semibold leading-5 text-xl text-[#b4a07c]">
+            <h2 className="mb-1 font-semibold leading-5 text-xl text-[#b4a07c]">
               Envíos gratis
-            </h6>
-            <p className="text-lg text-white">
-              Según zona, no dudes en consultarnos
-            </p>
+            </h2>
+            <p className="text-lg text-white">Según zona, consultanos!</p>
           </div>
         </div>
       </div>
