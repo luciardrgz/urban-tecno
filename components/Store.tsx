@@ -1,6 +1,4 @@
-import Image from "next/image";
 import urlFor from "../lib/urlFor";
-import ClientSideRoute from "./ClientSideRoute";
 import SearchFilters from "./SearchFilters";
 
 type Props = {
