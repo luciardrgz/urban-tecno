@@ -1,9 +1,8 @@
 "use client";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "../img/logo.png";
-import ClientSideRoute from "./ClientSideRoute";
-import { Dropdown, Nav } from "rsuite";
+import { Dropdown } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import { groq } from "next-sanity";
 import { client } from "../lib/sanity.client";
@@ -45,37 +44,36 @@ const Navbar: React.FC = () => {
 
   const navigationView = (
     <ul className="flex flex-col items-center p-4 gap-5 mt-4 -mb-1 md:flex-row md:mt-0 text-white font-semibold">
-      <li className="bg-[#b4a07c] rounded-md border-0" key={"store"}>
-        <Dropdown
-          title="Tienda"
-          className="rounded-md border-0 shadow-sm p-0.2 bg-[#b4a07c] text-black font-semibold"
-        >
-          <Dropdown.Item className="bg-[#b4a07c] hover:bg-[#cdb78e] text-[#5f5542] hover:text-black font-semibold">
-            <ClientSideRoute route={`http://localhost:3000/store`}>
+      <li key={"store"}>
+        <Dropdown title="Tienda" className="drop-menu">
+          <Dropdown.Item className="drop-item">
+            <a href={`/store`} className="item-a">
               Ver todo
-            </ClientSideRoute>
+            </a>
           </Dropdown.Item>
-          <Dropdown.Menu
-            title="Marcas"
-            className="bg-[#b4a07c] text-[#5f5542] hover:text-black font-semibold"
-            key={"brands"}
-          >
+
+          <Dropdown.Menu title="Marcas" className="submenu-custom">
             {brands && brands.length
               ? brands.map((brand) => (
-                  <Dropdown.Item className="hover:bg-[#cdb78e] text-[#5f5542] hover:text-black">
-                    {generateAnchor("brand/", brand)}
+                  <Dropdown.Item key={brand} className="drop-item">
+                    <a href={`/product/brand/${brand}`} className="item-a">
+                      {brand}
+                    </a>
                   </Dropdown.Item>
                 ))
               : null}
           </Dropdown.Menu>
-          <Dropdown.Menu
-            title="Categorías"
-            className="bg-[#b4a07c] text-[#5f5542] hover:text-black font-semibold"
-          >
+
+          <Dropdown.Menu title="Categorías" className="submenu-custom">
             {categories && categories.length
               ? categories.map((category) => (
-                  <Dropdown.Item className="hover:bg-[#cdb78e] text-[#5f5542] hover:text-black">
-                    {generateAnchor("category/", category)}
+                  <Dropdown.Item key={category} className="drop-item">
+                    <a
+                      href={`/product/category/${category}`}
+                      className="item-a"
+                    >
+                      {category}
+                    </a>
                   </Dropdown.Item>
                 ))
               : null}
@@ -84,15 +82,15 @@ const Navbar: React.FC = () => {
       </li>
 
       <li key={"home"}>
-        <ClientSideRoute route={`http://localhost:3000/`}>
-          <p className="nav-item">Inicio</p>
-        </ClientSideRoute>
+        <a href={`/`} className="nav-item">
+          Inicio
+        </a>
       </li>
 
       <li key={"contact"}>
-        <ClientSideRoute route={`http://localhost:3000/contact`}>
-          <p className="nav-item">Contacto</p>
-        </ClientSideRoute>
+        <a href={`/contact`} className="nav-item">
+          Contacto
+        </a>
       </li>
     </ul>
   );
@@ -101,9 +99,9 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar" id="navbar-dropdown">
-      <div className={"container flex flex-wrap items-center justify-between"}>
+      <div className={"container flex flex-wrap justify-between "}>
         <Image
-          className={"object-cover p-2"}
+          className={"object-cover p-2 ml-4"}
           height={50}
           width={50}
           src={logo}
@@ -115,9 +113,7 @@ const Navbar: React.FC = () => {
         <button
           data-collapse-toggle="navbar-dropdown"
           type="button"
-          className={
-            "items-center p-3 text-2xl text-[#b4a07c] rounded-lg md:hidden"
-          }
+          className={"drop-mobile"}
           aria-controls="navbar-dropdown"
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -144,14 +140,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-function generateAnchor(subpath: string, info: string) {
-  return (
-    <a
-      href={`/product/${subpath}/${info}`}
-      className="hover:no-underline text-[#5f5542] hover:text-black"
-    >
-      {info}
-    </a>
-  );
-}

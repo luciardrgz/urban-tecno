@@ -1,4 +1,3 @@
-import ClientSideRoute from "./ClientSideRoute";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,13 +25,12 @@ function SearchFilters() {
                 htmlFor="FilterOutOfStock"
                 className="inline-flex items-center gap-2"
               >
-                <ClientSideRoute
-                  route={`http://localhost:3000/store/priceDesc`}
+                <a
+                  href="/store/priceDesc"
+                  className="text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
                 >
-                  <span className="text-sm font-medium hover:text-[#b4a07c]">
-                    Precio mayor a menor
-                  </span>
-                </ClientSideRoute>
+                  Precio mayor a menor
+                </a>
               </label>
             </li>
 
@@ -42,11 +40,12 @@ function SearchFilters() {
                 htmlFor="FilterOutOfStock"
                 className="inline-flex items-center gap-2"
               >
-                <ClientSideRoute route={`http://localhost:3000/store/priceAsc`}>
-                  <span className="text-sm font-medium hover:text-[#b4a07c]">
-                    Precio menor a mayor
-                  </span>
-                </ClientSideRoute>
+                <a
+                  href="/store/priceAsc"
+                  className="text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
+                >
+                  Precio menor a mayor
+                </a>
               </label>
             </li>
 
@@ -56,11 +55,12 @@ function SearchFilters() {
                 htmlFor="FilterInStock"
                 className="inline-flex items-center gap-2"
               >
-                <ClientSideRoute route={`http://localhost:3000/store/newest`}>
-                  <span className="text-sm font-medium hover:text-[#b4a07c]">
-                    Más recientes
-                  </span>
-                </ClientSideRoute>
+                <a
+                  href="/store/newest"
+                  className="text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
+                >
+                  Más recientes
+                </a>
               </label>
             </li>
 
@@ -70,24 +70,23 @@ function SearchFilters() {
                 htmlFor="FilterPreOrder"
                 className="inline-flex items-center gap-2"
               >
-                <ClientSideRoute route={`http://localhost:3000/store/oldest`}>
-                  <span className="text-sm font-medium hover:text-[#b4a07c]">
-                    Más antiguos
-                  </span>
-                </ClientSideRoute>
+                <a
+                  href="/store/oldest"
+                  className="text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
+                >
+                  Más antiguos
+                </a>
               </label>
             </li>
           </ul>
 
           <header className="flex items-center justify-between p-4">
-            <ClientSideRoute route={`http://localhost:3000/store/`}>
-              <button
-                type="button"
-                className="text-sm text-gray-400 underline underline-offset-4 hover:text-white"
-              >
-                Limpiar
-              </button>
-            </ClientSideRoute>
+            <a
+              href="store/"
+              className="text-sm text-gray-400 hover:text-white hover:no-underline"
+            >
+              Limpiar
+            </a>
           </header>
         </div>
       </details>

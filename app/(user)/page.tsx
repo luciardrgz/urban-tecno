@@ -1,16 +1,16 @@
-import React, { Fragment, useState, useEffect } from "react";
-import "../../components/Hero";
+import React from "react";
+import CallToAction from "../../components/CTA";
 import Hero from "../../components/Hero";
 import LastProducts from "../../components/LastProducts";
-import Navbar from "../../components/Navbar";
 
-export const revalidate = 30; // revalidate this page every 60 seconds
+export const revalidate = 30;
 
 function HomePage() {
   return (
     <div>
       <Hero></Hero>
       <LastProducts></LastProducts>
+      <CallToAction></CallToAction>
     </div>
   );
 }
