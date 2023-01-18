@@ -42,7 +42,7 @@ async function Product({ params: { category } }: Props) {
   const products: Product[] = await client.fetch(query, { category });
 
   return (
-    <section className="text-gray-400 body-font">
+    <section className="text-gray-400 body-font text-center">
       <div className="container px-5 mx-auto">
         <h2 className="text-center text-xl font-bold sm:text-3xl mb-10 text-[#b4a07c]">
           {category}
@@ -53,7 +53,7 @@ async function Product({ params: { category } }: Props) {
             products.map((product) => (
               <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
                 <a
-                  className="block relative h-48 rounded overflow-hidden text-gray-300 hover:no-underline hover:text-[#b4a07c]"
+                  className="block h-48 rounded overflow-hidden text-gray-300 hover:no-underline hover:text-[#b4a07c]"
                   href={`/product/slug${product.slug.current}`}
                 >
                   {product.image && product.image ? (

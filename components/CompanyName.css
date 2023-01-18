@@ -18,3 +18,10 @@
       0 0 50px #544a39, 0 0 60px #544a39, 0 0 70px #b4a07c, 0 0 80px #b4a07c;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .glow {
+    animation: none;
+    text-shadow: #b4a07c 1px 0 10px;
+  }
+}
