@@ -34,6 +34,7 @@ function Contact() {
           </p>
           <a
             href="https://goo.gl/maps/76x7HchEEheZiEaX8"
+            target="_blank"
             className="flex items-center -mx-1 text-sm text-[#b4a07c] transition-colors duration-300 transform  hover:none hover:text-[#f1ddb7]"
           >
             <span className="mx-1">Ver en el mapa</span>
