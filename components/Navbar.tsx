@@ -118,7 +118,6 @@ const Navbar: React.FC = () => {
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <span className="sr-only">Open main menu</span>
           <FontAwesomeIcon icon={faBars} color="#b4a07c"></FontAwesomeIcon>
         </button>
 

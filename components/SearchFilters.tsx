@@ -82,7 +82,7 @@ function SearchFilters() {
 
           <header className="flex items-center justify-between p-4">
             <a
-              href="store/"
+              href="/store"
               className="text-sm text-gray-400 hover:text-white hover:no-underline"
             >
               Limpiar
