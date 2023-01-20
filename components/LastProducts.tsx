@@ -2,9 +2,6 @@
 import { groq } from "next-sanity";
 import { useState, useEffect } from "react";
 import { client } from "../lib/sanity.client";
-import ClientSideRoute from "./ClientSideRoute";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import urlFor from "../lib/urlFor";
 
 function LastProducts() {
@@ -14,6 +11,8 @@ function LastProducts() {
     const query = groq`
             *[_type == "product"][0..3] {
               name,
+              price,
+              category->,
               image,
               slug
             } | order(string(_createdAt) desc)`;
@@ -25,75 +24,134 @@ function LastProducts() {
   useEffect(() => {
     retrieveLastProducts();
   }, []);
-  return (
-    <div className="bg-[#1a1a1a] rounded-lg px-4 py-16 mb-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 ">
-      <div className="grid gap-10 lg:grid-cols-2">
-        <div className="flex flex-col justify-center md:pr-8 xl:pr-0 lg:max-w-lg">
-          <div className="max-w-xl mb-6">
-            <h2 className="max-w-lg text-3xl sm:text-4xl font-bold tracking-tight text-[#b4a07c] sm:leading-none">
-              Nuestras novedades
-            </h2>
-            <p className="text-base text-white mt-2 md:text-lg">
-              Estos son los últimos productos que entraron!
-            </p>
-          </div>
 
-          <div className="text-base md:text-md">
-            <p className="hover:text-[#b4a07c] ">
-              <ClientSideRoute route={`http://localhost:3000/store`}>
-                Ver todos
-              </ClientSideRoute>
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                color="text-gray-700"
-                className="ml-2"
-              ></FontAwesomeIcon>
-            </p>
+  return (
+    <div>
+      {lastProducts && lastProducts.length > 0 ? (
+        <div className="py-6 sm:py-8 lg:py-12">
+          <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
+            <div className="mb-10 md:mb-16">
+              <h2 className="text-[#b4a07c] text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
+                Nuestras novedades
+              </h2>
+
+              <p className="max-w-screen-md text-base text-white font-semibold md:text-lg text-center mx-auto">
+                Estos son los últimos productos que ingresaron, hacé clic en
+                cualquiera para más detalles
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {lastProducts && lastProducts
+                ? lastProducts.map((product) => (
+                    <div key={product.slug.current}>
+                      <a
+                        href={`product/slug/${product.slug.current}`}
+                        className="group h-96 block bg-[#1a1a1a] hover:no-underline hover:text-[#b4a07c] rounded-t-lg overflow-hidden relative"
+                      >
+                        {product.image && product.image ? (
+                          <img
+                            src={urlFor(product.image).url()}
+                            loading="eager"
+                            alt={product.name}
+                            className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+                          />
+                        ) : null}
+                      </a>
+
+                      <div className="flex justify-between items-start bg-[#0d0d0d] rounded-b-lg gap-2 p-4">
+                        <div className="flex flex-col">
+                          <a
+                            href={`product/slug/${product.slug.current}`}
+                            className="text-[#434242] hover:text-[#b4a07c] hover:no-underline lg:text-lg font-bold transition duration-100"
+                          >
+                            {product.name}
+                          </a>
+                          <a
+                            href={`product/category/${product.category.name}`}
+                            className="text-[#434242] hover:text-[#b4a07c] hover:no-underline text-sm lg:text-base"
+                          >
+                            {product.category.name}
+                          </a>
+                        </div>
+
+                        <div className="flex flex-col items-end">
+                          <span className="text-[#434242] lg:text-lg font-bold">
+                            ${product.price}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                : "No hay productos"}
+            </div>
           </div>
         </div>
-
-        {lastProducts && (
-          <div className="flex items-center justify-center -mx-4 lg:pl-8">
-            <div className="flex flex-col items-end px-3">
-              <a
-                href={`/product/slug/${lastProducts[1].slug.current}`}
-                className="hover:no-underline text-[#5f5542] hover:text-black"
-              >
-                <img
-                  className="object-cover mb-6 rounded shadow-lg h-48 sm:h-48 xl:h-48 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-                  src={urlFor(lastProducts[1].image).url()}
-                  alt={lastProducts[1].name}
-                />
-              </a>
-
-              <a
-                href={`/product/slug/${lastProducts[2].slug.current}`}
-                className="hover:no-underline text-[#5f5542] hover:text-black"
-              >
-                <img
-                  className="object-cover mb-6 rounded shadow-lg h-48 sm:h-48 xl:h-48 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-                  src={urlFor(lastProducts[2].image).url()}
-                  alt={lastProducts[2].name}
-                />
-              </a>
-            </div>
-            <div className="px-3">
-              <a
-                href={`/product/slug/${lastProducts[3].slug.current}`}
-                className="hover:no-underline text-[#5f5542] hover:text-black"
-              >
-                <img
-                  className="object-cover mb-6 rounded shadow-lg h-48 sm:h-48 xl:h-48 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-                  src={urlFor(lastProducts[3].image).url()}
-                  alt={lastProducts[3].name}
-                />
-              </a>
-            </div>
-          </div>
-        )}
-      </div>
+      ) : (
+        "No hay productos"
+      )}
     </div>
   );
 }
 
 export default LastProducts;
+
+/*<div className="py-6 sm:py-8 lg:py-12">
+      <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
+        <div className="mb-10 md:mb-16">
+          <h2 className="text-[#b4a07c] text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
+            Nuestras novedades
+          </h2>
+
+          <p className="max-w-screen-md text-base text-white font-semibold md:text-lg text-center mx-auto">
+            Estos son los últimos productos que ingresaron, hacé clic en
+            cualquiera para más detalles
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {lastProducts && lastProducts
+            ? lastProducts.map((product) => (
+                <div key={product.slug.current}>
+                  <a
+                    href={`product/${product.slug.current}`}
+                    className="group h-96 block bg-[#1a1a1a] hover:no-underline hover:text-[#b4a07c] rounded-t-lg overflow-hidden relative"
+                  >
+                    {product.image && product.image ? (
+                      <img
+                        src={urlFor(product.image).url()}
+                        loading="eager"
+                        alt={product.name}
+                        className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+                      />
+                    ) : null}
+                  </a>
+
+                  <div className="flex justify-between items-start bg-[#0d0d0d] rounded-b-lg gap-2 p-4">
+                    <div className="flex flex-col">
+                      <a
+                        href={`product/${product.slug.current}`}
+                        className="text-[#434242] hover:text-[#b4a07c] hover:no-underline lg:text-lg font-bold transition duration-100"
+                      >
+                        {product.name}
+                      </a>
+                      <a
+                        href={`category/${product.category.name}`}
+                        className="text-[#434242] hover:text-[#b4a07c] hover:no-underline text-sm lg:text-base"
+                      >
+                        {product.category.name}
+                      </a>
+                    </div>
+
+                    <div className="flex flex-col items-end">
+                      <span className="text-[#434242] lg:text-lg font-bold">
+                        ${product.price}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))
+            : "No hay productos"}
+        </div>
+      </div>
+    </div>*/
