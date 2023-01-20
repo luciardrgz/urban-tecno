@@ -11,7 +11,9 @@ function Hero() {
   return (
     <div className="px-4 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 mb-8">
       <div className="max-w-xl mb-10 sm:mx-auto">
-        <h2 className="text-center text-lg mb-5 font-semibold">Bienvenido a</h2>
+        <h2 className="text-center text-lg mt-10 mb-5 font-semibold">
+          Bienvenido a
+        </h2>
         <h2 className="glow">Full Tecno</h2>
       </div>
       <div className="pt-10 grid gap-12 row-gap-8 lg:grid-cols-3">
