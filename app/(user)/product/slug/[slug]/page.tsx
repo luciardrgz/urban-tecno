@@ -69,21 +69,25 @@ async function Product({ params: { slug } }: Props) {
 
               <div className="flex mt-6 items-center pb-5 border-b-2 border-[#b4a07c] mb-5">
                 <div className="flex">
-                  <span className="mr-3 text-gray-300">
-                    Colores disponibles
-                  </span>
-                  {product.colors &&
-                    product.colors.map((color) => (
-                      <>
+                  {product.colors && product.colors.length > 0 ? (
+                    <>
+                      <span className="mr-3 text-gray-300">
+                        Colores disponibles
+                      </span>
+                      {product.colors.map((color) => (
                         <input
                           type="image"
+                          className="border-2 pointer-events-none border-white ml-1 rounded-full w-6 h-6 focus:outline-none"
                           src={urlFor(color.image).url()}
-                          className="border-2 border-white ml-1  rounded-full w-6 h-6 focus:outline-none"
-                          name={color.name}
                           alt={color.name}
                         />
-                      </>
-                    ))}
+                      ))}
+                    </>
+                  ) : (
+                    <span className="mr-3 text-gray-300">
+                      Colores no especificados
+                    </span>
+                  )}
                 </div>
               </div>
 
