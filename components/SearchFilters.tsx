@@ -20,74 +20,52 @@ function SearchFilters() {
 
         <div className="bg-[#161616] text-white border-gray-200">
           <ul className="p-4 space-y-1 border-t  border-gray-200">
-            <li>
-              <label
-                htmlFor="FilterOutOfStock"
-                className="inline-flex items-center gap-2"
+            <li key={"priceDesc"}>
+              <a
+                href={`/store/filter/priceDesc`}
+                className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
               >
-                <a
-                  href="/store/priceDesc"
-                  className="text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
-                >
-                  Precio mayor a menor
-                </a>
-              </label>
+                Precio mayor a menor
+              </a>
             </li>
 
             <div className="p-1 border-t border-[#b4a07c]"></div>
-            <li>
-              <label
-                htmlFor="FilterOutOfStock"
-                className="inline-flex items-center gap-2"
+            <li key={"priceAsc"}>
+              <a
+                href="/store/filter/priceAsc"
+                className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
               >
-                <a
-                  href="/store/priceAsc"
-                  className="text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
-                >
-                  Precio menor a mayor
-                </a>
-              </label>
+                Precio menor a mayor
+              </a>
             </li>
 
             <div className="p-1 border-t border-[#b4a07c]"></div>
-            <li>
-              <label
-                htmlFor="FilterInStock"
-                className="inline-flex items-center gap-2"
+            <li key={"latest"}>
+              <a
+                href="/store/filter/latest"
+                className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
               >
-                <a
-                  href="/store/newest"
-                  className="text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
-                >
-                  Más recientes
-                </a>
-              </label>
+                Más recientes
+              </a>
             </li>
 
             <div className="p-1 border-t border-[#b4a07c]"></div>
-            <li>
-              <label
-                htmlFor="FilterPreOrder"
-                className="inline-flex items-center gap-2"
+            <li key={"oldest"}>
+              <a
+                href="/store/filter/oldest"
+                className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
               >
-                <a
-                  href="/store/oldest"
-                  className="text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
-                >
-                  Más antiguos
-                </a>
-              </label>
+                Más antiguos
+              </a>
             </li>
           </ul>
 
-          <header className="flex items-center justify-between p-4">
-            <a
-              href="/store"
-              className="text-sm text-gray-400 hover:text-white hover:no-underline"
-            >
-              Limpiar
-            </a>
-          </header>
+          <a
+            href="/store"
+            className="flex items-center justify-between p-4 text-sm text-gray-400 hover:text-white hover:no-underline"
+          >
+            Limpiar
+          </a>
         </div>
       </details>
     </div>

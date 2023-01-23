@@ -4,6 +4,7 @@ import { client } from "../../../lib/sanity.client";
 import PreviewSuspense from "../../../components/PreviewSuspense";
 import PreviewStore from "../../../components/PreviewStore";
 import Store from "../../../components/Store";
+import SearchFilters from "../../../components/SearchFilters";
 
 const query = groq`
 *[_type == 'product']{
@@ -33,5 +34,17 @@ export default async function StoreList() {
   }
 
   const products = await client.fetch(query);
-  return <Store products={products} />;
+  return (
+    <>
+      <section className="text-gray-400 body-font p-2 text-center">
+        <div className="container px-5 mx-auto">
+          <div className="flex flex-wrap -m-4">
+            <SearchFilters></SearchFilters>
+          </div>
+        </div>
+      </section>
+
+      <Store products={products} />
+    </>
+  );
 }
