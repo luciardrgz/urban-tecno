@@ -1,5 +1,4 @@
 import urlFor from "../lib/urlFor";
-import SearchFilters from "./SearchFilters";
 
 type Props = {
   products: Product[];
@@ -10,10 +9,9 @@ function Store({ products }: Props) {
     <section className="text-gray-400 body-font p-2 text-center">
       <div className="container px-5 mx-auto">
         <div className="flex flex-wrap -m-4">
-          <SearchFilters></SearchFilters>
           {products &&
             products.map((product) => (
-              <div className="pt-20 lg:w-1/4 md:w-1/2 p-4 w-full">
+              <div className="-z-10 pt-20 lg:w-1/4 md:w-1/2 p-4 w-full">
                 <a
                   className="block h-48 rounded overflow-hidden text-gray-300 hover:no-underline hover:text-[#b4a07c]"
                   href={`/product/slug/${product.slug.current}`}
