@@ -22,7 +22,7 @@ function SearchFilters() {
           <ul className="p-4 space-y-1 border-t  border-gray-200">
             <li key={"priceDesc"}>
               <a
-                href={`/store/filter/priceDesc`}
+                href="/store/filter/priceDesc"
                 className="inline-flex items-center gap-2 text-white text-sm font-medium hover:text-[#b4a07c] hover:no-underline"
               >
                 Precio mayor a menor
