@@ -5,7 +5,7 @@ import {
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import "../../../components/CompanyName.css";
+import "../../../components/css/CompanyName.css";
 
 function Contact() {
   return (

@@ -8,7 +8,7 @@ import { groq } from "next-sanity";
 import { client } from "../lib/sanity.client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import "./Navbar.css";
+import "./css/Navbar.css";
 
 const Navbar: React.FC = () => {
   const [brands, setBrands] = useState<string[]>();

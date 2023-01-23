@@ -5,7 +5,7 @@ import {
   faTruckFast,
 } from "@fortawesome/free-solid-svg-icons";
 
-import "./CompanyName.css";
+import "./css/CompanyName.css";
 
 function Hero() {
   return (
