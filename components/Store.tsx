@@ -13,7 +13,7 @@ function Store({ products }: Props) {
           <SearchFilters></SearchFilters>
           {products &&
             products.map((product) => (
-              <div className="pt-20 lg:w-1/4 md:w-1/2 p-4 w-full">
+              <div className="-z-10 pt-20 lg:w-1/4 md:w-1/2 p-4 w-full">
                 <a
                   className="block h-48 rounded overflow-hidden text-gray-300 hover:no-underline hover:text-[#b4a07c]"
                   href={`/product/slug/${product.slug.current}`}
