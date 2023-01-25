@@ -1,11 +1,11 @@
 import { groq } from "next-sanity";
 import { client } from "../../../../../lib/sanity.client";
 import urlFor from "../../../../../lib/urlFor";
-import color from "../../../../../schemas/color";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
-import { PortableText } from "@portabletext/react";
 import ImageSlider from "../../../../../components/ImageSlider";
+import Image from "next/image";
+import noImg from "../../../../../img/no-img.png";
 
 type Props = {
   params: {
@@ -37,6 +37,8 @@ async function Product({ params: { slug } }: Props) {
       ...,
       name,
       category->{name},
+      info,
+      images[],
       brand->,
       origin->,
       colors[]->
@@ -45,19 +47,25 @@ async function Product({ params: { slug } }: Props) {
 
   const product: Product = await client.fetch(query, { slug });
 
-  const images: string[] = [
-    "https://splidejs.com/images/slides/general/03.jpg",
-    "https://splidejs.com/images/slides/general/02.jpg",
-    "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v535batch2-mynt-43.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=9f602de67a347b7c50ef8eeac3835189",
-    "https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg?w=2000",
-  ];
+  const images: string[] = product.images?.map((image) => urlFor(image).url());
 
   return (
     <>
       <div className="py-6 sm:py-8 lg:py-12">
         <div className="max-w-screen-xl px-4 md:px-8 mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
-            <ImageSlider imageUrls={images}></ImageSlider>
+            {images && images.length > 0 ? (
+              <ImageSlider imageUrls={images}></ImageSlider>
+            ) : (
+              <Image
+                src={noImg}
+                loading="eager"
+                priority={true}
+                alt={product.name}
+                className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+              ></Image>
+            )}
+
             <div className="md:py-8">
               <div className="mb-2 md:mb-3">
                 <span className="inline-block text-[#5e5e5e] mb-0.5">
@@ -82,13 +90,15 @@ async function Product({ params: { slug } }: Props) {
               <div className="flex mt-6 items-center pb-5 border-b-2 border-[#b4a07c] mb-5">
                 <div className="flex">
                   <span className="mr-3 text-white text-justify">
-                    <PortableText value={product.info}></PortableText>
+                    {product.info && product.info.length > 0
+                      ? product.info
+                      : "Sin especificaciones"}
                   </span>
                 </div>
               </div>
 
               <div className="mb-4 md:mb-6">
-                {product.colors.length > 0 ? (
+                {product.colors && product.colors.length > 0 ? (
                   <>
                     <span className="inline-block mr-3 text-white text-sm md:text-sm mb-3">
                       Colores disponibles
@@ -124,7 +134,7 @@ async function Product({ params: { slug } }: Props) {
 
               <div className="flex justify-end items-end gap-2 mb-4">
                 <span className="text-white text-xl md:text-2xl font-bold mb-2 mr-3">
-                  ${product.price}
+                  ${product.price ? product.price : "Precio no disponible"}
                 </span>
 
                 <div className="flex gap-2.5 ">

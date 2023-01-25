@@ -59,7 +59,7 @@ export default defineType({
     }),
     defineField({
       name: "info",
-      title: "Información extra",
+      title: "Especificaciones",
       type: "text",
     }),
     defineField({
@@ -69,12 +69,19 @@ export default defineType({
       of: [{ type: "reference", to: { type: "color" } }],
     }),
     defineField({
-      name: "image",
-      title: "Foto",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
+      name: "images",
+      title: "Imágenes",
+      type: "array",
+      of: [
+        {
+          name: "image",
+          title: "Imagen",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
     }),
     defineField({
       name: "slug",
