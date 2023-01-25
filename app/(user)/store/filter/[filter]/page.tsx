@@ -1,4 +1,5 @@
 import { groq } from "next-sanity";
+import SearchFilters from "../../../../../components/SearchFilters";
 import Store from "../../../../../components/Store";
 import { client } from "../../../../../lib/sanity.client";
 
@@ -24,7 +25,18 @@ async function Product({ params: { filter } }: Props) {
 
   const products: Product[] = await client.fetch(query, { criteria });
 
-  return <Store products={products} />;
+  return (
+    <>
+      <section className="text-gray-400 body-font p-2 text-center">
+        <div className="container px-5 mx-auto">
+          <div className="flex flex-wrap -m-4">
+            <SearchFilters></SearchFilters>
+          </div>
+        </div>
+      </section>
+      <Store products={products} />
+    </>
+  );
 }
 
 export default Product;

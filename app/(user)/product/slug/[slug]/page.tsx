@@ -1,9 +1,11 @@
 import { groq } from "next-sanity";
-import Image from "next/image";
 import { client } from "../../../../../lib/sanity.client";
 import urlFor from "../../../../../lib/urlFor";
-import { Fragment, ReactElement } from "react";
 import color from "../../../../../schemas/color";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
+import { PortableText } from "@portabletext/react";
+import ImageSlider from "../../../../../components/ImageSlider";
 
 type Props = {
   params: {
@@ -43,73 +45,103 @@ async function Product({ params: { slug } }: Props) {
 
   const product: Product = await client.fetch(query, { slug });
 
-  return (
-    <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container px-5 mx-auto">
-        {product && (
-          <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            {product.image && product.image ? (
-              <img
-                className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-                src={urlFor(product.image).url()}
-                alt={product.name}
-              />
-            ) : (
-              <p className="text-lg lg:w-1/2 w-full lg:h-auto h-64 text-center rounded">
-                Imagen no disponible
-              </p>
-            )}
-            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                {product.brand.name}
-              </h2>
-              <h1 className="text-[#b4a07c] text-3xl title-font font-medium mb-1">
-                {product.name}
-              </h1>
+  const images: string[] = [
+    "https://splidejs.com/images/slides/general/03.jpg",
+    "https://splidejs.com/images/slides/general/02.jpg",
+    "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v535batch2-mynt-43.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=9f602de67a347b7c50ef8eeac3835189",
+    "https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg?w=2000",
+  ];
 
+  return (
+    <>
+      <div className="py-6 sm:py-8 lg:py-12">
+        <div className="max-w-screen-xl px-4 md:px-8 mx-auto">
+          <div className="grid md:grid-cols-2 gap-8">
+            <ImageSlider imageUrls={images}></ImageSlider>
+            <div className="md:py-8">
+              <div className="mb-2 md:mb-3">
+                <span className="inline-block text-[#5e5e5e] mb-0.5">
+                  {product.category.name}
+                </span>
+                <h2 className="text-[#b4a07c] text-2xl lg:text-3xl font-bold">
+                  {product.name}
+                </h2>
+              </div>
+
+              <div className="flex items-center gap-3 mb-1 md:mb-1">
+                <div className="h-7 flex items-center bg-[#0f0f0f] text-[#b4a07c] rounded-full gap-1 px-2">
+                  <span className="text-sm">{product.brand.name}</span>
+                </div>
+
+                <span className="text-[#5e5e5e] text-sm transition duration-100">
+                  {product.brand.origin}
+                </span>
+              </div>
+
+              <div className="flex items-center pb-5 border-b-2 border-[#b4a07c]"></div>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-[#b4a07c] mb-5">
                 <div className="flex">
-                  {product.colors && product.colors.length > 0 ? (
-                    <>
-                      <span className="mr-3 text-gray-300">
-                        Colores disponibles
-                      </span>
+                  <span className="mr-3 text-white text-justify">
+                    <PortableText value={product.info}></PortableText>
+                  </span>
+                </div>
+              </div>
+
+              <div className="mb-4 md:mb-6">
+                {product.colors.length > 0 ? (
+                  <>
+                    <span className="inline-block mr-3 text-white text-sm md:text-sm mb-3">
+                      Colores disponibles
+                    </span>
+
+                    <div className="flex flex-wrap gap-2">
                       {product.colors.map((color) => (
                         <input
                           type="image"
-                          className="border-2 pointer-events-none border-white ml-1 rounded-full w-6 h-6 focus:outline-none"
+                          className="border-2 pointer-events-none border-white ml-1 rounded-full w-8 h-8 focus:outline-none"
                           src={urlFor(color.image).url()}
                           alt={color.name}
                         />
                       ))}
-                    </>
-                  ) : (
-                    <span className="mr-3 text-gray-300">
-                      Colores no especificados
-                    </span>
-                  )}
-                </div>
+                    </div>
+                  </>
+                ) : (
+                  <span className="inline-block text-gray-500 text-sm md:text-base font-semibold mb-3">
+                    Colores no especificados
+                  </span>
+                )}
               </div>
 
-              <div className="flex mt-6 items-center pb-5 border-b-2 border-[#b4a07c] mb-5">
-                <div className="flex">
-                  <span className="mr-3 text-white">{product.details}</span>
-                </div>
+              <div className="flex items-center text-[#5e5e5e] gap-2 mb-6">
+                <FontAwesomeIcon
+                  icon={faTruck}
+                  width={"1.5em"}
+                  height={"1.5em"}
+                ></FontAwesomeIcon>
+
+                <span className="text-sm">Envío gratis según zona</span>
               </div>
 
-              <div className="flex">
-                <span className="title-font font-medium text-2xl text-white">
-                  $58.00
+              <div className="flex justify-end items-end gap-2 mb-4">
+                <span className="text-white text-xl md:text-2xl font-bold mb-2 mr-3">
+                  ${product.price}
                 </span>
-                <button className="flex ml-auto py-2 px-6 rounded transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                  Consultar
-                </button>
+
+                <div className="flex gap-2.5 ">
+                  <a
+                    href="https://wa.me/5492236020937"
+                    target="_blank"
+                    className="inline-block flex-1 sm:flex-none bg-[#b4a07c] hover:bg-[#928265] text-black hover:text-white hover:no-underline text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-300 px-8 py-3"
+                  >
+                    Consultar
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
-    </section>
+    </>
   );
 }
 

@@ -17,13 +17,13 @@ function CallToAction() {
         <div className="flex items-center justify-center sm:justify-center">
           <a
             href="/store"
-            className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide bg-[#b4a07c] hover:no-underline hover:text-[#1a1a1a] text-white transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
+            className="inline-flex items-center justify-center h-12 px-6 mr-6  bg-[#b4a07c] text-white  hover:bg-[#796c53] hover:text-white hover:no-underline transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
           >
             Ir a la tienda
           </a>
           <a
             href="/contact"
-            className="inline-flex items-center font-semibold text-[#1a1a1a] hover:no-underline hover:text-[#b4a07c] transition-colors duration-200 hover:text-deep-purple-accent-700"
+            className="inline-flex items-center font-semibold text-[#796c53] hover:no-underline hover:text-[#b4a07c] transition-colors duration-200 hover:text-deep-purple-accent-700"
           >
             Contactar
           </a>

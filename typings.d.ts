@@ -35,14 +35,15 @@ interface Product extends Base {
   slug: Slug;
   brand: Brand;
   category: Category;
-  details: string;
-  info: Block[];
+  compatibility: Product[];
+  info: Span[];
   weight: number;
   dimensions: string;
   origin: Country;
   colors: Color[];
   image: Image;
   price: number;
+  stock: boolean;
 }
 
 interface Category extends Base {
@@ -57,9 +58,8 @@ interface Brand extends Base {
   slug: Slug;
 }
 
-interface Country extends Base {
+interface Origin extends Base {
   name: string;
-  slug: Slug;
 }
 
 interface Color extends Base {

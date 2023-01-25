@@ -3,6 +3,8 @@ import { groq } from "next-sanity";
 import { useState, useEffect } from "react";
 import { client } from "../lib/sanity.client";
 import urlFor from "../lib/urlFor";
+import Image from "next/image";
+import noImg from "../img/no-img.png";
 
 function LastProducts() {
   const [lastProducts, setLastProducts] = useState<Product[]>();
@@ -49,14 +51,22 @@ function LastProducts() {
                         href={`product/slug/${product.slug.current}`}
                         className="group h-96 block bg-[#1a1a1a] hover:no-underline hover:text-[#b4a07c] rounded-t-lg overflow-hidden relative"
                       >
-                        {product.image && product.image ? (
+                        {product.image ? (
                           <img
                             src={urlFor(product.image).url()}
                             loading="eager"
                             alt={product.name}
                             className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
                           />
-                        ) : null}
+                        ) : (
+                          <Image
+                            src={noImg}
+                            loading="eager"
+                            priority={true}
+                            alt={product.name}
+                            className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+                          ></Image>
+                        )}
                       </a>
 
                       <div className="flex justify-between items-start bg-[#0d0d0d] rounded-b-lg gap-2 p-4">
