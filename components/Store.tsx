@@ -18,11 +18,11 @@ function Store({ products }: Props) {
                   className="block h-48 rounded overflow-hidden text-gray-300 hover:no-underline hover:text-[#b4a07c]"
                   href={`/product/slug/${product.slug.current}`}
                 >
-                  {product.image && product.image ? (
+                  {product.images && product.images.length > 0 ? (
                     <img
                       alt="ecommerce"
                       className="object-cover object-center w-full h-full block "
-                      src={urlFor(product.image).url()}
+                      src={urlFor(product.images[0]).url()}
                     />
                   ) : (
                     <Image

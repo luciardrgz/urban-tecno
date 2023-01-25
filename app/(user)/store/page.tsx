@@ -10,6 +10,7 @@ const query = groq`
 *[_type == 'product']{
   ...,
   name,
+  images[],
   category->{name}
 } | order(_createdAt desc)
 `;

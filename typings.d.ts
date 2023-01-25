@@ -29,19 +29,18 @@ interface Block {
   style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
 }
 
-// TODO: Array de imagenes
 interface Product extends Base {
   name: string;
   slug: Slug;
   brand: Brand;
   category: Category;
   compatibility: Product[];
-  info: Span[];
+  info: string;
   weight: number;
   dimensions: string;
   origin: Country;
   colors: Color[];
-  image: Image;
+  images: Image[];
   price: number;
   stock: boolean;
 }

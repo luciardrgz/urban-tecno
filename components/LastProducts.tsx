@@ -15,7 +15,7 @@ function LastProducts() {
               name,
               price,
               category->,
-              image,
+              images[],
               slug
             } | order(string(_createdAt) desc)`;
 
@@ -51,13 +51,17 @@ function LastProducts() {
                         href={`product/slug/${product.slug.current}`}
                         className="group h-96 block bg-[#1a1a1a] hover:no-underline hover:text-[#b4a07c] rounded-t-lg overflow-hidden relative"
                       >
-                        {product.image ? (
-                          <img
-                            src={urlFor(product.image).url()}
-                            loading="eager"
-                            alt={product.name}
-                            className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
-                          />
+                        {product.images && product.images.length > 0 ? (
+                          product.images
+                            .slice(0, 1)
+                            .map((image) => (
+                              <img
+                                src={urlFor(image).url()}
+                                loading="eager"
+                                alt={product.name}
+                                className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+                              />
+                            ))
                         ) : (
                           <Image
                             src={noImg}
