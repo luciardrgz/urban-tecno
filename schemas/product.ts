@@ -11,13 +11,14 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "name",
-        maxLength: 96,
-      },
+      name: "stock",
+      title: "En stock",
+      type: "boolean",
+    }),
+    defineField({
+      name: "price",
+      title: "Precio",
+      type: "number",
     }),
     defineField({
       name: "brand",
@@ -28,24 +29,28 @@ export default defineType({
     defineField({
       name: "category",
       title: "Categoria",
-      type: "reference", //,
+      type: "reference",
       to: [{ type: "category" }],
     }),
     defineField({
-      name: "details",
-      description: "Breve fragmento para la tienda...",
-      title: "Detalles",
-      type: "string",
-    }),
-    defineField({
-      name: "info",
-      title: "Información extra",
-      type: "blockContent",
+      name: "compatibility",
+      title: "Compatible con",
+      type: "array",
+      of: [
+        {
+          title: "Mothers",
+          type: "reference",
+          to: { type: "product" },
+          options: {
+            filter: 'category->name == "test2"', //TODO: Change this to mother category
+          },
+        },
+      ],
     }),
     defineField({
       name: "weight",
       title: "Peso",
-      type: "number",
+      type: "string",
     }),
     defineField({
       name: "dimensions",
@@ -53,10 +58,9 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "origin",
-      title: "Pais de origen",
-      type: "reference",
-      to: [{ type: "origin" }],
+      name: "info",
+      title: "Información extra",
+      type: "text",
     }),
     defineField({
       name: "colors",
@@ -73,9 +77,13 @@ export default defineType({
       },
     }),
     defineField({
-      name: "price",
-      title: "Precio",
-      type: "number",
+      name: "slug",
+      title: "ID",
+      type: "slug",
+      options: {
+        source: "name",
+        maxLength: 96,
+      },
     }),
   ],
 });

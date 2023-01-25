@@ -13,8 +13,8 @@ export default defineType({
     defineField({
       name: "country_of_origin",
       title: "Pais de origen",
-      type: "array",
-      of: [{ type: "reference", to: { type: "origin" } }],
+      type: "reference",
+      to: [{ type: "origin" }],
     }),
     defineField({
       name: "image",
