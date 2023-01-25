@@ -1,4 +1,6 @@
 import urlFor from "../lib/urlFor";
+import Image from "next/image";
+import noImg from "../img/no-img.png";
 
 type Props = {
   products: Product[];
@@ -11,7 +13,7 @@ function Store({ products }: Props) {
         <div className="flex flex-wrap -m-4">
           {products &&
             products.map((product) => (
-              <div className="-z-10 pt-20 lg:w-1/4 md:w-1/2 p-4 w-full">
+              <div className="pt-20 lg:w-1/4 md:w-1/2 p-4 w-full">
                 <a
                   className="block h-48 rounded overflow-hidden text-gray-300 hover:no-underline hover:text-[#b4a07c]"
                   href={`/product/slug/${product.slug.current}`}
@@ -23,9 +25,13 @@ function Store({ products }: Props) {
                       src={urlFor(product.image).url()}
                     />
                   ) : (
-                    <p className="py-20 w-full h-full block border-2 border-[#463f31] text-[#463f31] font-semibold hover:text-[#b4a07c] transition-colors duration-300 transform">
-                      Toca para ver más
-                    </p>
+                    <Image
+                      src={noImg}
+                      loading="eager"
+                      priority={true}
+                      alt={product.name}
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+                    ></Image>
                   )}
                 </a>
 
