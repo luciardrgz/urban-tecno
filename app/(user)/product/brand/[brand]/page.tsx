@@ -11,14 +11,13 @@ export const revalidate = 30; // revalidate this page every 30 seconds
 
 export async function generateStaticParams() {
   const query = groq`
-		*[_type == "product"]
+		*[_type == "product" && brand != null]
 		{
 			brand->{name}
 		}
 		`;
 
   const brands: Product[] = await client.fetch(query);
-
   const brandRoutes = brands.map((brand) => brand.brand.name);
 
   return brandRoutes.map((brand) => ({

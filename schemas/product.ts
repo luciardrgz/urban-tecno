@@ -9,6 +9,7 @@ export default defineType({
       name: "name",
       title: "Nombre del producto",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "stock",
@@ -31,6 +32,7 @@ export default defineType({
       title: "Categoria",
       type: "reference",
       to: [{ type: "category" }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "compatibility",
@@ -38,11 +40,12 @@ export default defineType({
       type: "array",
       of: [
         {
+          name: "compatibleMothers",
           title: "Mothers",
           type: "reference",
           to: { type: "product" },
           options: {
-            filter: 'category->name == "test2"', //TODO: Change this to mother category
+            filter: 'category->name == "Motherboard"',
           },
         },
       ],
@@ -91,6 +94,7 @@ export default defineType({
         source: "name",
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
   ],
 });

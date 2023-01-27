@@ -35,27 +35,30 @@ const ImageCarousel: React.FC<Props> = ({ imageUrls }) => {
         src={imageUrls[currentIndex]}
         className="w-full h-96 object-center object-cover"
       />
-
-      <button
-        className="absolute top-[192px] left-0 p-2  bg-white rounded-full"
-        onClick={handlePrevious}
-      >
-        <FontAwesomeIcon
-          icon={faChevronLeft}
-          width={"1.5em"}
-          height={"1.5em"}
-        ></FontAwesomeIcon>
-      </button>
-      <button
-        className="absolute top-[192px] right-0 p-2  bg-white rounded-full"
-        onClick={handleNext}
-      >
-        <FontAwesomeIcon
-          icon={faChevronRight}
-          width={"1.5em"}
-          height={"1.5em"}
-        ></FontAwesomeIcon>
-      </button>
+      {imageUrls.length > 1 ? (
+        <>
+          <button
+            className="absolute top-[192px] left-0 p-2  bg-white rounded-full"
+            onClick={handlePrevious}
+          >
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              width={"1.5em"}
+              height={"1.5em"}
+            ></FontAwesomeIcon>
+          </button>
+          <button
+            className="absolute top-[192px] right-0 p-2  bg-white rounded-full"
+            onClick={handleNext}
+          >
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              width={"1.5em"}
+              height={"1.5em"}
+            ></FontAwesomeIcon>
+          </button>
+        </>
+      ) : null}
     </div>
   );
 };
