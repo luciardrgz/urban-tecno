@@ -76,15 +76,17 @@ async function Product({ params: { slug } }: Props) {
                 </h2>
               </div>
 
-              <div className="flex items-center gap-3 mb-1 md:mb-1">
-                <div className="h-7 flex items-center bg-[#0f0f0f] text-[#b4a07c] rounded-full gap-1 px-2">
-                  <span className="text-sm">{product.brand.name}</span>
-                </div>
+              {product.brand && (
+                <div className="flex items-center gap-3 mb-1 md:mb-1">
+                  <div className="h-7 flex items-center bg-[#0f0f0f] text-[#b4a07c] rounded-full gap-1 px-2">
+                    <span className="text-sm">{product.brand.name}</span>
+                  </div>
 
-                <span className="text-[#5e5e5e] text-sm transition duration-100">
-                  {product.brand.origin}
-                </span>
-              </div>
+                  <span className="text-[#5e5e5e] text-sm transition duration-100">
+                    {product.brand.origin}
+                  </span>
+                </div>
+              )}
 
               <div className="flex items-center pb-5 border-b-2 border-[#b4a07c]"></div>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-[#b4a07c] mb-5">
@@ -134,7 +136,7 @@ async function Product({ params: { slug } }: Props) {
 
               <div className="flex justify-end items-end gap-2 mb-4">
                 <span className="text-white text-xl md:text-2xl font-bold mb-2 mr-3">
-                  ${product.price ? product.price : "Precio no disponible"}
+                  {product.price ? "$" + product.price : "Precio no disponible"}
                 </span>
 
                 <div className="flex gap-2.5 ">

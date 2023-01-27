@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 
 async function Product({ params: { category } }: Props) {
   const query = groq`
-		*[_type == "product" && category->name == $category]{
+		*[_type == "product" && category!=null && category->name == $category]{
       ...,
       name,
       category->{name},

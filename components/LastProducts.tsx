@@ -17,7 +17,7 @@ function LastProducts() {
               category->,
               images[],
               slug
-            } | order(string(_createdAt) desc)`;
+            } | order((_createdAt) desc)`;
 
     const lastProducts: Product[] = await client.fetch(query);
     setLastProducts(lastProducts);
@@ -44,8 +44,9 @@ function LastProducts() {
             </div>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {lastProducts && lastProducts
-                ? lastProducts.map((product) => (
+              {lastProducts.map((product) => (
+                <>
+                  {product.slug.current && (
                     <div key={product.slug.current}>
                       <a
                         href={`product/slug/${product.slug.current}`}
@@ -96,8 +97,9 @@ function LastProducts() {
                         </div>
                       </div>
                     </div>
-                  ))
-                : "No hay productos"}
+                  )}
+                </>
+              ))}
             </div>
           </div>
         </div>
