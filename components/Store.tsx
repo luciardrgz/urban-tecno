@@ -3,19 +3,24 @@ import Image from "next/image";
 import noImg from "../img/no-img.png";
 
 type Props = {
-  products: Product[];
+  allProducts: Product[];
 };
 
-function Store({ products }: Props) {
+function Store({ allProducts }: Props) {
+  const productsWithPrice = allProducts.filter((product) => product.price);
+  const productsWithoutPrice = allProducts.filter((product) => !product.price);
+
+  const products = productsWithPrice.concat(productsWithoutPrice);
+
   return (
     <section className="text-gray-400 body-font p-2 text-center">
       <div className="container px-5 mx-auto">
-        <div className="flex flex-wrap -m-4">
+        <div className="flex flex-wrap -m-4 mt-5">
           {products &&
             products.map((product) => (
-              <div className="pt-20 lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 transition duration-200">
+              <div className="mt-6 lg:w-1/4 md:w-1/2 p-4 w-full hover:scale-110 transition duration-200 ">
                 <a
-                  className="block h-48 rounded overflow-hidden text-gray-300 hover:no-underline hover:text-[#b4a07c] "
+                  className="block h-48 rounded overflow-hidden text-gray-300 hover:no-underline hover:text-[#b4a07c]"
                   href={`/product/slug/${product.slug.current}`}
                 >
                   {product.images && product.images.length > 0 ? (
@@ -46,13 +51,15 @@ function Store({ products }: Props) {
                     {product.price ? (
                       "$" + product.price
                     ) : (
-                      <a
-                        href="https://wa.me/5492236020937"
-                        target="_blank"
-                        className=" hover:no-underline hover:text-[#f1ddb7] transition-colors duration-300 transform  "
-                      >
-                        Consultar
-                      </a>
+                      <>
+                        <a
+                          href="https://wa.me/5492236020937"
+                          target="_blank"
+                          className=" hover:no-underline hover:text-[#f1ddb7] transition-colors duration-300 transform  "
+                        >
+                          Consultar
+                        </a>
+                      </>
                     )}
                   </p>
                 </div>

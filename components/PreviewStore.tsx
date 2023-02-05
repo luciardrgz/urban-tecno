@@ -9,5 +9,5 @@ type Props = {
 
 export default function PreviewStore({ query }: Props) {
   const products = usePreview(null, query);
-  return <Store products={products} />;
+  return <Store allProducts={products} />;
 }
