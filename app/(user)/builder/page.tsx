@@ -63,7 +63,7 @@ function Builder() {
   return (
     <>
       {components && components.length > 0 && i < routes.length ? (
-        <div className="py-6 sm:py-8 lg:py-12 max-w-screen-2xl px-4 md:px-8 mx-auto">
+        <div className="py-6 sm:py-8 lg:py-12 max-w-screen-2xl px-4 md:px-8 mx-auto min-h-screen">
           <div className="flex justify-between items-end gap-4 mb-6">
             <h2 className="text-white text-2xl lg:text-3xl font-bold">
               {components && components[0] && components[0].category ? (

@@ -40,7 +40,7 @@ async function Product({ params: { brand } }: Props) {
   const products: Product[] = await client.fetch(query, { brand });
 
   return (
-    <section className="text-gray-400 body-font text-center">
+    <section className="text-gray-400 body-font text-center min-h-screen">
       <div className="container px-5 mx-auto">
         <h2 className="text-center text-xl font-bold text-white sm:text-3xl mt-10">
           Productos marca
@@ -49,7 +49,7 @@ async function Product({ params: { brand } }: Props) {
           </span>
         </h2>
 
-        <Store products={products} />
+        <Store allProducts={products} />
       </div>
     </section>
   );
