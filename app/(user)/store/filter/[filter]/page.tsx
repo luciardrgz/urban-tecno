@@ -34,7 +34,7 @@ async function Product({ params: { filter } }: Props) {
           </div>
         </div>
       </section>
-      <Store products={products} />
+      <Store allProducts={products} />
     </>
   );
 }

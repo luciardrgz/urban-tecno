@@ -12,7 +12,7 @@ const query = groq`
   name,
   images[],
   category->{name}
-} | order(_createdAt desc)
+} | order(price asc)
 `;
 
 export const revalidate = 30; // revalidate this page every 60 seconds
@@ -45,7 +45,7 @@ export default async function StoreList() {
         </div>
       </section>
 
-      <Store products={products} />
+      <Store allProducts={products} />
     </>
   );
 }

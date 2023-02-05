@@ -9,7 +9,7 @@ import "../../../components/css/CompanyName.css";
 
 function Contact() {
   return (
-    <div className="container px-6 py-5 mx-auto">
+    <div className="container px-6 py-5 mx-auto min-h-screen">
       <h1 className="text-3xl font-semibold text-center text-white  lg:text-4xl ">
         Contactate con
       </h1>

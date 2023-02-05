@@ -10,7 +10,7 @@ import "./css/CompanyName.css";
 function Hero() {
   return (
     <div className="px-4 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 mb-8">
-      <div className="max-w-xl mb-10 sm:mx-auto">
+      <div className="max-w-xl mb-2 sm:mx-auto">
         <h2 className="text-center text-lg mt-10 mb-5 font-semibold">
           Bienvenido a
         </h2>

@@ -30,16 +30,23 @@ function LastProducts() {
   return (
     <div>
       {lastProducts && lastProducts.length > 0 ? (
-        <div className="py-6 sm:py-8 lg:py-12">
+        <div className="mt-2 sm:py-8 lg:py-12">
           <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
             <div className="mb-10 md:mb-16">
-              <h2 className="text-[#b4a07c] text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
+              <h2 className="text-[#b4a07c] text-2xl lg:text-3xl font-bold text-center">
                 Nuestras novedades
               </h2>
 
-              <p className="max-w-screen-md text-base text-white font-semibold md:text-lg text-center mx-auto">
-                Estos son los últimos productos que ingresaron, hacé clic en
-                cualquiera para más detalles
+              {/*Desktop*/}
+              <p className="max-w-screen-md text-base justify-center text-white font-semibold md:text-lg hidden md:block text-center mx-auto mt-2">
+                Los últimos productos que ingresaron. Clickeá cualquiera para
+                más detalles:
+              </p>
+
+              {/*Mobile*/}
+              <p className="max-w-screen-md text-base justify-center text-white font-semibold md:text-lg md:hidden text-center mx-auto">
+                Los últimos productos que ingresaron. <br />
+                Clickeá cualquiera para más detalles:
               </p>
             </div>
 
