@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
 
       <li key={"builder"}>
         <a href={`/builder`} className="nav-item">
-          Armá tu pc
+          Armá tu PC
         </a>
       </li>
     </ul>

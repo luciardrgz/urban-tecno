@@ -52,9 +52,9 @@ function LastProducts() {
 
             <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {lastProducts.map((product) => (
-                <>
+                <div key={product.slug.current}>
                   {product.slug.current && (
-                    <div key={product.slug.current}>
+                    <>
                       <a
                         href={`product/slug/${product.slug.current}`}
                         className="group h-96 block bg-[#1a1a1a] hover:no-underline hover:text-[#b4a07c] rounded-t-lg overflow-hidden relative"
@@ -103,9 +103,9 @@ function LastProducts() {
                           </span>
                         </div>
                       </div>
-                    </div>
+                    </>
                   )}
-                </>
+                </div>
               ))}
             </div>
           </div>
