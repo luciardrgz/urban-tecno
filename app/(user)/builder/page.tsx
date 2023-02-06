@@ -6,18 +6,20 @@ import urlFor from "../../../lib/urlFor";
 import Image from "next/image";
 import noImg from "../../../img/no-img.png";
 import BuilderTotal from "../../../components/BuilderEnd";
+import BuilderInstructions from "../../../components/BuilderInstructions";
 
 export const revalidate = 30; // revalidate this page every 30 seconds
 
-const routes: string[] = [
+const steps: string[] = [
+  "Instrucciones",
   "Motherboard",
   "Procesador",
   "Memoria",
-  /* "cooler",
-    "videocard",
-    "storage",
-    "source",
-    "cabinet",*/
+  "Almacenamiento",
+  "Placa de video",
+  /*"Cooler",
+    "Fuente",
+    "Gabinete",*/
 ];
 
 function Builder() {
@@ -41,7 +43,7 @@ function Builder() {
 	`;
 
     const components: Product[] = await client.fetch(query, {
-      category: routes[i],
+      category: steps[i],
     });
 
     setComponents(components);
@@ -52,17 +54,25 @@ function Builder() {
       setSelectedComponents([...selectedComponents, currentSelectedComponent]);
       setCurrentSelectedComponent(null);
     }
+    changeIteratorValue();
+  }
+
+  function changeIteratorValue() {
     setI(i + 1);
   }
 
   useEffect(() => {
-    if (routes.length == i) return;
+    if (steps.length == i) return;
     retrieveComponents();
-  }, [i, routes.length]);
+  }, [i, steps.length]);
 
   return (
     <>
-      {components && components.length > 0 && i < routes.length ? (
+      {i == 0 ? (
+        <BuilderInstructions
+          changeIteratorValue={changeIteratorValue}
+        ></BuilderInstructions>
+      ) : components && components.length > 0 && i < steps.length ? (
         <div className="py-6 sm:py-8 lg:py-12 max-w-screen-2xl px-4 md:px-8 mx-auto min-h-screen">
           <div className="flex justify-between items-end gap-4 mb-6">
             <h2 className="text-white text-2xl lg:text-3xl font-bold">
