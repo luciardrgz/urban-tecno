@@ -13,17 +13,13 @@ function Footer() {
             icon={faInstagram}
             width={"1.5em"}
             height={"1.5em"}
-          ></FontAwesomeIcon>
+          />
         </a>
         <a
           href="https://wa.me/5492236020937"
           className="text-[#666666] hover:text-[#b4a07c] mt-4"
         >
-          <FontAwesomeIcon
-            icon={faWhatsapp}
-            width={"1.5em"}
-            height={"1.5em"}
-          ></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faWhatsapp} width={"1.5em"} height={"1.5em"} />
         </a>
       </div>
       <div className="text-[#666666]">© 2023 - Full Tecno</div>

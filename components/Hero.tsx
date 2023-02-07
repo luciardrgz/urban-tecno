@@ -25,7 +25,7 @@ function Hero() {
                 color={"black"}
                 width={"1.5em"}
                 height={"1.5em"}
-              ></FontAwesomeIcon>
+              />
             </div>
           </div>
           <div>
@@ -43,7 +43,7 @@ function Hero() {
                 color={"black"}
                 width={"1.5em"}
                 height={"1.5em"}
-              ></FontAwesomeIcon>
+              />
             </div>
           </div>
           <div>
@@ -61,7 +61,7 @@ function Hero() {
                 color={"black"}
                 width={"1.5em"}
                 height={"1.5em"}
-              ></FontAwesomeIcon>
+              />
             </div>
           </div>
           <div>
