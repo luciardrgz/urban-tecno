@@ -7,6 +7,7 @@ import Image from "next/image";
 import noImg from "../../../img/no-img.png";
 import BuilderTotal from "../../../components/BuilderEnd";
 import BuilderInstructions from "../../../components/BuilderInstructions";
+import BuilderStepsTitle from "../../../components/BuilderStepsTitle";
 
 export const revalidate = 30; // revalidate this page every 30 seconds
 
@@ -75,27 +76,7 @@ function Builder() {
       ) : components && components.length > 0 && i < steps.length ? (
         <div className="py-6 sm:py-8 lg:py-12 max-w-screen-2xl px-4 md:px-8 mx-auto min-h-screen">
           <div className="flex justify-between items-end gap-4 mb-6">
-            <h2 className="text-white text-2xl lg:text-3xl font-bold">
-              {components && components[0] && components[0].category ? (
-                <>{components[0].category.name}</>
-              ) : null}
-              <br />
-
-              <span className="text-[#9c9c9c] text-base lg:text-base font-semibold">
-                {components[0].category.description &&
-                components[0].category.description.length > 0 ? (
-                  components[0].category.description
-                ) : (
-                  <a
-                    className="hover:text-[#302f2d] hover:no-underline"
-                    href={`https://www.google.com/search?q=${components[0].category.name}`}
-                    target="_blank"
-                  >
-                    ¿Qué es?
-                  </a>
-                )}
-              </span>
-            </h2>
+            <BuilderStepsTitle components={components}></BuilderStepsTitle>
 
             <a
               className="p-3 hover:cursor-pointer bg-[#b4a07c] hover:bg-[#5c5240] text-black hover:text-white hover:no-underline text-base font-semibold rounded-lg transition-colors duration-300 transform"

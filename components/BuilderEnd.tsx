@@ -6,29 +6,40 @@ type Props = {
   components: Product[];
 };
 
+const styles = {
+  container: "py-5 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto",
+  header: "text-3xl lg:text-4xl font-semibold text-[#b4a07c]",
+  product: "bg-[#1a1a1a] rounded-lg px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full",
+  pricing:
+    "flex justify-center md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8",
+  nextSteps:
+    "flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-[#1a1a1a] rounded-lg",
+  build:
+    "bg-[#1a1a1a] rounded-lg w-full xl:w-96 flex justify-start items-start md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col",
+};
+
 function BuilderEnd({ components }: Props) {
-  let dateTime = new Date();
+  const dateTime = new Date();
 
-  let subtotal: number = 0;
-  components.map((component) => (subtotal += component.price));
-
-  let discountPercentage: number = 0.1;
-  let discount: number = subtotal * discountPercentage;
-  let priceWithDiscount: number = subtotal - discount;
+  const subtotal = components.reduce(
+    (sum, component) => sum + component.price,
+    0
+  );
+  const DISCOUNT_PERCENTAGE: number = 0.1;
+  const discount = subtotal * DISCOUNT_PERCENTAGE;
+  const priceWithDiscount: number = subtotal - discount;
 
   let total: number = 0;
 
   return (
-    <div className="py-5 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
+    <div className={styles.container}>
       <div className="flex justify-start item-start flex-col ">
-        <h1 className="text-3xl lg:text-4xl font-semibold text-[#b4a07c]">
-          Tu presupuesto
-        </h1>
+        <h1 className={styles.header}>Tu presupuesto</h1>
       </div>
 
       <div className="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch  w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
         <div className="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
-          <div className="flex flex-col justify-start items-start bg-[#1a1a1a] rounded-lg px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
+          <div className={styles.product}>
             <p className="text-lg md:text-xl font-semibold leading-6 xl:leading-5 text-[#b4a07c]">
               Productos elegidos
             </p>
@@ -91,7 +102,7 @@ function BuilderEnd({ components }: Props) {
             ))}
           </div>
 
-          <div className="flex justify-center md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
+          <div className={styles.pricing}>
             <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-[#1a1a1a] rounded-lg space-y-6   ">
               <h3 className="text-xl font-semibold leading-5 text-[#b4a07c]">
                 Descuentos y total
@@ -140,7 +151,7 @@ function BuilderEnd({ components }: Props) {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-[#1a1a1a] rounded-lg">
+            <div className={styles.nextSteps}>
               <h3 className="text-xl font-semibold text-[#b4a07c]">
                 Qué hacer ahora
               </h3>
@@ -165,7 +176,7 @@ function BuilderEnd({ components }: Props) {
           </div>
         </div>
 
-        <div className="bg-[#1a1a1a] rounded-lg w-full xl:w-96 flex justify-start items-start md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
+        <div className={styles.build}>
           <h3 className="text-xl font-semibold leading-5 text-[#b4a07c]">
             Build
           </h3>
