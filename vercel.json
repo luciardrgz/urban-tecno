@@ -1,4 +1,6 @@
 {
   "version": 2,
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/store/filter/oldest", "destination": "/store/filter/oldest" }
+  ]
 }
