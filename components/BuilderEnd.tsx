@@ -71,11 +71,15 @@ function BuilderEnd({ components }: Props) {
                       <Image
                         src={noImg}
                         alt={component.name}
+                        loading="eager"
+                        priority={true}
                         className="w-full h-full object-cover hidden md:block"
                       ></Image>
                       <Image
                         src={noImg}
                         alt={component.name}
+                        loading="eager"
+                        priority={true}
                         className="w-full h-full object-cover md:hidden"
                       ></Image>
                     </div>
