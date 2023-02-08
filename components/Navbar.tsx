@@ -105,11 +105,9 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar" id="navbar-dropdown">
-      <div className={"container flex flex-wrap justify-between "}>
+      <div className="container flex flex-wrap justify-between ">
         <Image
-          className={"object-cover p-2 ml-4"}
-          height={50}
-          width={50}
+          className={"object-center p-2 w-40 ml-4"}
           src={logo}
           alt="logo"
           loading="eager"

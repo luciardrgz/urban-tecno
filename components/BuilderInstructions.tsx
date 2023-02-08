@@ -41,12 +41,12 @@ const BuilderInstructions: React.FC<{ changeIteratorValue: () => void }> = ({
               </p>
 
               <div className="mt-4 md:mt-8">
-                <button
+                <a
                   onClick={changeIteratorValue}
-                  className="inline-block rounded bg-[#b4a07c] px-12 py-3 text-sm font-medium text-[#161616] transition hover:bg-[#796c53] hover:text-white hover:no-underline"
+                  className="inline-block rounded bg-[#b4a07c] hover:bg-[#796c53] px-12 py-3 text-sm font-medium hover:text-white text-[#161616] transition hover:no-underline hover:cursor-pointer"
                 >
                   Empezar
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -55,12 +55,16 @@ const BuilderInstructions: React.FC<{ changeIteratorValue: () => void }> = ({
             <Image
               alt="Gaming"
               src={gaming}
+              loading="eager"
+              priority={true}
               className="h-40 w-full object-cover sm:h-56 md:h-full rounded-lg"
             />
 
             <Image
               alt="Laptop"
               src={laptop}
+              loading="eager"
+              priority={true}
               className="h-40 w-full object-cover sm:h-56 md:h-full rounded-lg"
             />
           </div>

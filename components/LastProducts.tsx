@@ -110,9 +110,7 @@ function LastProducts() {
             </div>
           </div>
         </div>
-      ) : (
-        "No hay productos"
-      )}
+      ) : null}
     </div>
   );
 }
