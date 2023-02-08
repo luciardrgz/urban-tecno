@@ -99,7 +99,9 @@ function Builder() {
                             name={product.slug.current}
                             checked={product === currentSelectedComponent}
                             onChange={(e) => {
-                              setCurrentSelectedComponent(product);
+                              setCurrentSelectedComponent(
+                                e.target.checked ? product : null
+                              );
                             }}
                           />
 
@@ -134,7 +136,7 @@ function Builder() {
 
                           <br />
                           <a
-                            className="hover:no-underline hover:text-[#b4a07c]"
+                            className="text-[#4e4e4e] hover:no-underline hover:text-[#b4a07c] transition"
                             href={`/product/slug/${product.slug.current}`}
                             target="_blank"
                           >
