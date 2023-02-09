@@ -13,9 +13,9 @@ const BuilderInstructions: React.FC<{ changeIteratorValue: () => void }> = ({
     <section className="min-h-screen">
       <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div className="bg-[#1a1a1a] p-8 md:p-12 lg:px-16 lg:py-24 rounded-lg">
+          <div className="bg-[#1a1a1a] p-8 md:p-12 lg:px-16 lg:py-24 rounded-lg -mt-5 md:mt-0 lg:mt-0">
             <div className="mx-auto max-w-xl text-center">
-              <h2 className="text-2xl font-bold text-[#b4a07c] md:text-3xl">
+              <h2 className="text-lg font-bold text-[#b4a07c] md:text-3xl lg:text-3xl">
                 Armá tu PC totalmente personalizada!
               </h2>
 

@@ -21,6 +21,8 @@
 
 @media only screen and (max-width: 768px) {
   .glow {
+    font-size: 2rem;
+    margin-top: -1rem;
     animation: none;
     text-shadow: #b4a07c 1px 0 10px;
   }
