@@ -5,9 +5,9 @@
 @tailwind utilities;
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", sans-serif !important;
 }
 
 .text-xl {
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", sans-serif !important;
 }
