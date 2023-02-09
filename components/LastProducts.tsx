@@ -33,7 +33,7 @@ function LastProducts() {
         <div className="mt-2 sm:py-8 lg:py-12">
           <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
             <div className="mb-10 md:mb-16">
-              <h2 className="text-[#b4a07c] text-2xl lg:text-3xl font-bold text-center">
+              <h2 className="text-[#b4a07c] text-lg md:text-2xl lg:text-3xl font-bold text-center">
                 Nuestras novedades
               </h2>
 
@@ -44,20 +44,20 @@ function LastProducts() {
               </p>
 
               {/*Mobile*/}
-              <p className="max-w-screen-md text-base justify-center text-white font-semibold md:text-lg md:hidden text-center mx-auto">
+              <p className="max-w-screen-md text-small justify-center text-white font-semibold md:text-lg md:hidden text-center mx-auto">
                 Los últimos productos que ingresaron. <br />
                 Clickeá cualquiera para más detalles:
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
               {lastProducts.map((product) => (
                 <div key={product.slug.current}>
                   {product.slug.current && (
                     <>
                       <a
                         href={`product/slug/${product.slug.current}`}
-                        className="group h-96 block bg-[#1a1a1a] hover:no-underline hover:text-[#b4a07c] rounded-t-lg overflow-hidden relative"
+                        className="group h-40 md:h-96 lg:h-96 block bg-[#1a1a1a] hover:no-underline hover:text-[#b4a07c] rounded-t-lg overflow-hidden relative"
                       >
                         {product.images && product.images.length > 0 ? (
                           product.images
@@ -82,25 +82,27 @@ function LastProducts() {
                       </a>
 
                       <div className="flex justify-between items-start bg-[#0d0d0d] rounded-b-lg gap-2 p-4">
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                           <a
                             href={`product/slug/${product.slug.current}`}
                             className="text-[#434242] hover:text-[#b4a07c] hover:no-underline lg:text-lg font-bold transition duration-100"
                           >
-                            {product.name}
+                            {product.name.length > 20
+                              ? `${product.name.substring(0, 20)}...`
+                              : product.name}
                           </a>
+
                           <a
                             href={`product/category/${product.category.name}`}
-                            className="text-[#434242] hover:text-[#b4a07c] hover:no-underline text-sm lg:text-base"
+                            className="text-[#434242] hover:text-[#b4a07c] w-200 hover:no-underline text-sm md:text-base lg:text-base"
                           >
                             {product.category.name}
                           </a>
-                        </div>
-
-                        <div className="flex flex-col items-end">
-                          <span className="text-[#434242] lg:text-lg font-bold">
-                            ${product.price}
-                          </span>
+                          <div className="flex flex-col items-end">
+                            <span className="text-[#434242] lg:text-lg font-bold">
+                              ${product.price}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </>
@@ -110,9 +112,7 @@ function LastProducts() {
             </div>
           </div>
         </div>
-      ) : (
-        "No hay productos"
-      )}
+      ) : null}
     </div>
   );
 }

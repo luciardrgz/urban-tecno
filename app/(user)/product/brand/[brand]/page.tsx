@@ -42,7 +42,7 @@ async function Product({ params: { brand } }: Props) {
   return (
     <section className="text-gray-400 body-font text-center min-h-screen">
       <div className="container px-5 mx-auto">
-        <h2 className="text-center text-xl font-bold text-white sm:text-3xl mt-10">
+        <h2 className="mb-1 text-center text-xl font-bold text-white sm:text-3xl mt-10">
           Productos marca
           <span className="text-xl font-bold text-[#b4a07c] sm:text-3xl">
             &nbsp;{brand}

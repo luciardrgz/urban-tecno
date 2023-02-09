@@ -86,13 +86,13 @@ function Builder() {
             </a>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 relative">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 relative">
             {components && components.length > 0
               ? components.map((product) => (
                   <div key={product.slug.current}>
                     {product.slug.current && (
                       <div className="flex flex-col">
-                        <div className="group h-80 block rounded-lg mb-2 lg:mb-3">
+                        <div className="group h-40 md:h-80 lg:h-80 block rounded-lg mb-2 lg:mb-3">
                           <input
                             type="checkbox"
                             id={product.slug.current}
