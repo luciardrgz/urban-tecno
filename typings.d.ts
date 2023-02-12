@@ -38,7 +38,7 @@ interface Product extends Base {
   info: string;
   weight: number;
   dimensions: string;
-  origin: Country;
+  origin: Origin;
   colors: Color[];
   images: Image[];
   price: number;
@@ -59,6 +59,7 @@ interface Brand extends Base {
 
 interface Origin extends Base {
   name: string;
+  slug: Slug;
 }
 
 interface Color extends Base {
