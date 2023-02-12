@@ -45,7 +45,13 @@ async function Product({ params: { slug } }: Props) {
 
   const images: string[] = product.images?.map((image) => urlFor(image).url());
 
-  return <SingleProduct product={product} images={images}></SingleProduct>;
+  return (
+    <>
+      {product && (
+        <SingleProduct product={product} images={images}></SingleProduct>
+      )}
+    </>
+  );
 }
 
 export default Product;
