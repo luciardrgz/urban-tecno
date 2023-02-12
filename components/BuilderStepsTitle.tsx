@@ -4,13 +4,13 @@ type Props = {
 
 function BuilderSteps({ components }: Props) {
   return (
-    <h2 className="text-white text-2xl lg:text-3xl font-bold">
+    <div className="text-white -mt-5 md:mt-0 lg:mt-0 text-2xl lg:text-3xl font-bold">
       {components && components[0] && components[0].category ? (
         <>{components[0].category.name}</>
       ) : null}
       <br />
 
-      <span className="text-[#9c9c9c] text-base lg:text-base font-semibold">
+      <p className="text-[#9c9c9c] w-[90%] md:w-full lg:w-full text-justify md:text-start lg:text-start mt-2 md:mt-2 lg:mt-2 leading-5  md:leading-normal lg:leading-normal text-sm md:text-base lg:text-base font-semibold ">
         {components[0].category.description &&
         components[0].category.description.length > 0 ? (
           components[0].category.description
@@ -23,8 +23,8 @@ function BuilderSteps({ components }: Props) {
             ¿Qué es?
           </a>
         )}
-      </span>
-    </h2>
+      </p>
+    </div>
   );
 }
 

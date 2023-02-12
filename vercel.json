@@ -1,6 +1,9 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/store/filter/oldest", "destination": "/store/filter/oldest" }
+    {
+      "source": "/store/filter/priceAsc",
+      "destination": "/store/filter/priceAsc"
+    }
   ]
 }
