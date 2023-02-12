@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./css/Navbar.css";
 
-const Navbar: React.FC = () => {
+function Navbar() {
   const [brands, setBrands] = useState<string[]>();
   const [categories, setCategories] = useState<string[]>();
 
@@ -140,6 +140,6 @@ const Navbar: React.FC = () => {
       <hr className="border-[#b4a07c] my-2 mb-10" />
     </nav>
   );
-};
+}
 
 export default Navbar;
