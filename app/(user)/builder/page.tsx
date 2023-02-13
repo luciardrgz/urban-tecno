@@ -5,7 +5,7 @@ import { client } from "../../../lib/sanity.client";
 import urlFor from "../../../lib/urlFor";
 import Image from "next/image";
 import noImg from "../../../img/no-img.png";
-import BuilderTotal from "../../../components/BuilderEnd";
+import BuilderEnd from "../../../components/BuilderEnd";
 import BuilderInstructions from "../../../components/BuilderInstructions";
 import BuilderStepsTitle from "../../../components/BuilderStepsTitle";
 
@@ -77,7 +77,6 @@ function Builder() {
         <div className="py-6 sm:py-8 lg:py-12 max-w-screen-2xl px-4 md:px-8 mx-auto min-h-screen">
           <div className="flex justify-between items-end gap-4 mb-6">
             <BuilderStepsTitle components={components}></BuilderStepsTitle>
-
             <a
               className="p-3 hover:cursor-pointer bg-[#b4a07c] hover:bg-[#5c5240] text-black hover:text-white hover:no-underline text-base font-semibold rounded-lg transition-colors duration-300 transform"
               onClick={handleNextClick}
@@ -151,7 +150,7 @@ function Builder() {
           </div>
         </div>
       ) : (
-        <BuilderTotal components={selectedComponents}></BuilderTotal>
+        <BuilderEnd components={selectedComponents}></BuilderEnd>
       )}
     </>
   );
