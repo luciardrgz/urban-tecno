@@ -57,7 +57,7 @@ function LastProducts() {
                     <>
                       <a
                         href={`product/slug/${product.slug.current}`}
-                        className="group h-40 md:h-96 lg:h-96 block bg-[#1a1a1a] hover:no-underline hover:text-[#b4a07c] rounded-t-lg overflow-hidden relative"
+                        className="group h-48 md:h-80 flex items-end bg-[#1a1a1a] overflow-hidden rounded-lg shadow-lg relative hover:no-underline hover:text-[#b4a07c] rounded-t-lg"
                       >
                         {product.images && product.images.length > 0 ? (
                           product.images.slice(0, 1).map((image) => (
@@ -66,7 +66,7 @@ function LastProducts() {
                                 src={urlFor(image).url()}
                                 loading="eager"
                                 alt={product.name}
-                                className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+                                className="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200"
                               />
                             </div>
                           ))
@@ -85,7 +85,7 @@ function LastProducts() {
                         <div className="flex flex-col w-full">
                           <a
                             href={`product/slug/${product.slug.current}`}
-                            className="text-[#434242] hover:text-[#b4a07c] hover:no-underline lg:text-lg font-bold transition duration-100"
+                            className="text-[#574f3d] hover:text-[#b4a07c] hover:no-underline lg:text-lg font-bold transition duration-100"
                           >
                             {product.name.length > 20
                               ? `${product.name.substring(0, 20)}...`

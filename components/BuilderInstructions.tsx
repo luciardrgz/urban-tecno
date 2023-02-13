@@ -42,7 +42,7 @@ const BuilderInstructions: React.FC<{ changeIteratorValue: () => void }> = ({
 
               <div className="mt-4 md:mt-8">
                 <a
-                  onClick={changeIteratorValue}
+                  onClick={() => changeIteratorValue()}
                   className="inline-block rounded bg-[#b4a07c] hover:bg-[#796c53] px-12 py-3 text-sm font-medium hover:text-white text-[#161616] transition hover:no-underline hover:cursor-pointer"
                 >
                   Empezar

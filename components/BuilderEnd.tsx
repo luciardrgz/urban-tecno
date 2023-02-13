@@ -7,7 +7,8 @@ type Props = {
 };
 
 const styles = {
-  container: "py-5 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto",
+  container:
+    "py-5 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto min-h-screen",
   header:
     "text-xl md:text-3xl lg:text-4xl font-semibold text-[#b4a07c] -mt-2 -mb-10 md:my-0 lg:my-0 ",
   product: "bg-[#1a1a1a] rounded-lg px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full",
@@ -44,68 +45,72 @@ function BuilderEnd({ components }: Props) {
             <p className="text-lg md:text-xl font-semibold leading-6 xl:leading-5 text-[#b4a07c]">
               Productos elegidos
             </p>
-            {components.map((component) => (
-              <div
-                className="mt-4 flex flex-col-2 gap-5 md:gap-0 lg:gap-0 md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full"
-                key={component.slug.current}
-              >
-                <div className="pb-4 md:pb-8 w-full md:w-40">
-                  {component.images && component.images.length > 0 ? (
-                    component.images.slice(0, 1).map((image) => (
-                      <div key={component.slug.current}>
-                        {/*Desktop*/}
-                        <img
-                          className="w-full hidden md:block"
-                          src={urlFor(image).url()}
+            {components && components.length > 0 ? (
+              components.map((component) => (
+                <div
+                  className="mt-4 flex flex-col-2 gap-5 md:gap-0 lg:gap-0 md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full"
+                  key={component.slug.current}
+                >
+                  <div className="pb-4 md:pb-8 w-full md:w-40">
+                    {component.images && component.images.length > 0 ? (
+                      component.images.slice(0, 1).map((image) => (
+                        <div key={component.slug.current}>
+                          {/*Desktop*/}
+                          <img
+                            className="w-full hidden md:block"
+                            src={urlFor(image).url()}
+                            alt={component.name}
+                          />
+                          {/*Mobile*/}
+                          <img
+                            className="w-full h-20 object-cover md:hidden"
+                            src={urlFor(image).url()}
+                            alt={component.name}
+                          />
+                        </div>
+                      ))
+                    ) : (
+                      <div className="pb-4 w-full md:pb-8 md:w-30">
+                        <Image
+                          src={noImg}
                           alt={component.name}
-                        />
-                        {/*Mobile*/}
-                        <img
-                          className="w-full h-20 object-cover md:hidden"
-                          src={urlFor(image).url()}
+                          loading="eager"
+                          priority={true}
+                          className="w-full h-full object-cover hidden md:block"
+                        ></Image>
+                        <Image
+                          src={noImg}
                           alt={component.name}
-                        />
+                          loading="eager"
+                          priority={true}
+                          className="w-full h-full object-cover md:hidden"
+                        ></Image>
                       </div>
-                    ))
-                  ) : (
-                    <div className="pb-4 w-full md:pb-8 md:w-30">
-                      <Image
-                        src={noImg}
-                        alt={component.name}
-                        loading="eager"
-                        priority={true}
-                        className="w-full h-full object-cover hidden md:block"
-                      ></Image>
-                      <Image
-                        src={noImg}
-                        alt={component.name}
-                        loading="eager"
-                        priority={true}
-                        className="w-full h-full object-cover md:hidden"
-                      ></Image>
+                    )}
+                  </div>
+
+                  <div className="border-b border-[#b4a07c] md:border-[#9c9c9c] lg:border-[#9c9c9c] md:flex-row flex-col flex items-start w-full pb-2 md:pb-8 lg:pb-8 space-y-4 md:space-y-0">
+                    <div className="w-full lg:w-[500%] flex flex-col justify-start items-start space-y-2">
+                      <h3 className="text-base md:text-lg lg:text-lg font-semibold leading-6 text-white">
+                        {component.name}
+                      </h3>
+
+                      <span className="text-white">
+                        {component.category.name}
+                      </span>
                     </div>
-                  )}
-                </div>
 
-                <div className="border-b border-[#b4a07c] md:border-[#9c9c9c] lg:border-[#9c9c9c] md:flex-row flex-col flex items-start w-full pb-2 md:pb-8 lg:pb-8 space-y-4 md:space-y-0">
-                  <div className="w-full lg:w-[500%] flex flex-col justify-start items-start space-y-2">
-                    <h3 className="text-base md:text-lg lg:text-lg font-semibold leading-6 text-white">
-                      {component.name}
-                    </h3>
-
-                    <span className="text-white">
-                      {component.category.name}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-start md:justify-end lg:justify-end space-x-8 items-start w-full">
-                    <p className="text-base -mt-3 xl:text-lg font-semibold text-white">
-                      ${component.price}
-                    </p>
+                    <div className="flex justify-start md:justify-end lg:justify-end space-x-8 items-start w-full">
+                      <p className="text-base -mt-3 xl:text-lg font-semibold text-white">
+                        ${component.price}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>No se seleccionaron componentes</p>
+            )}
           </div>
 
           <div className={styles.pricing}>
@@ -189,9 +194,7 @@ function BuilderEnd({ components }: Props) {
 
           <div className="flex flex-col justify-start items-start h-full w-full ">
             <div className="flex justify-start py-4 border-b border-[#b4a07c] w-full">
-              <p className="cursor-pointer text-sm text-white">
-                {dateTime.toDateString()}
-              </p>
+              <p className="text-sm text-white">{dateTime.toDateString()}</p>
             </div>
 
             {components && components.length > 0 ? (
