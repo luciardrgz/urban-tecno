@@ -43,15 +43,7 @@ async function Product({ params: { slug } }: Props) {
 
   const product: Product = await client.fetch(query, { slug });
 
-  const images: string[] = product.images?.map((image) => urlFor(image).url());
-
-  return (
-    <>
-      {product && (
-        <SingleProduct product={product} images={images}></SingleProduct>
-      )}
-    </>
-  );
+  return <>{product && <SingleProduct product={product}></SingleProduct>}</>;
 }
 
 export default Product;
