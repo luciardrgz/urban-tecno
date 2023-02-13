@@ -49,7 +49,13 @@ async function Product({ params: { brand } }: Props) {
           </span>
         </h2>
 
-        <Store allProducts={products} />
+        {products && products.length > 0 ? (
+          <Store allProducts={products} />
+        ) : (
+          <p className="mt-5 text-lg md:mt-5 lg:mt-5 md:text-lg lg:t{brand} ext-lg">
+            Lo sentimos, aún no tenemos productos {brand} :(
+          </p>
+        )}
       </div>
     </section>
   );
