@@ -52,7 +52,7 @@ async function Product({ params: { brand } }: Props) {
         {products && products.length > 0 ? (
           <Store allProducts={products} />
         ) : (
-          <p className="mt-5 text-lg md:mt-5 lg:mt-5 md:text-lg lg:t{brand} ext-lg">
+          <p className="mt-5 text-lg md:text-lg lg:text-lg">
             Lo sentimos, aún no tenemos productos {brand} :(
           </p>
         )}

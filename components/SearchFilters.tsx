@@ -4,7 +4,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 function SearchFilters() {
   return (
     <div className="mb-20 md:mb-0 lg:mb-0">
-      <div className="absolute p-3 pb-10 w-48 text-center">
+      <div className="absolute p-3 pb-10 w-48 text-center ml-4">
         <details className="w-48 overflow-hidden rounded-md border bg-[#b4a07c] border-[#b4a07c] [&_summary::-webkit-details-marker]:hidden">
           <summary className="flex items-center justify-between p-2 text-white cursor-pointer">
             <span className="text-sm font-medium text-[#161616]">
