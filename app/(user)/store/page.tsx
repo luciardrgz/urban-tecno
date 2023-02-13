@@ -37,15 +37,11 @@ export default async function StoreList() {
   const products = await client.fetch(query);
   return (
     <>
-      <section className="text-gray-400 body-font p-2 text-center">
+      <section className="text-gray-400 body-font p-2 text-center min-h-screen">
         <div className="container px-5 mx-auto">
-          <div className="flex flex-wrap -m-4">
-            <SearchFilters></SearchFilters>
-          </div>
+          <SearchFilters></SearchFilters> <Store allProducts={products} />
         </div>
       </section>
-
-      <Store allProducts={products} />
     </>
   );
 }
