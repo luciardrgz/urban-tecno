@@ -35,7 +35,7 @@ interface Product extends Base {
   brand: Brand;
   category: Category;
   compatibility: Product[];
-  info: string;
+  info: Block[];
   weight: number;
   dimensions: string;
   origin: Origin;

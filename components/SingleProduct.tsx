@@ -4,13 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import noImg from "../img/no-img.png";
 import urlFor from "../lib/urlFor";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "../components/RichTextComponents";
 
 type Props = {
   product: Product;
-  images: string[];
 };
 
-function SingleProduct({ product, images }: Props) {
+function SingleProduct({ product }: Props) {
+  const images: string[] = product.images?.map((image) => urlFor(image).url());
+
   return (
     <div className="py-6 sm:py-8 lg:py-12 min-h-screen">
       <div className="max-w-screen-xl px-4 md:px-8 mx-auto">
@@ -53,9 +56,14 @@ function SingleProduct({ product, images }: Props) {
             <div className="flex mt-6 items-center pb-5 border-b-2 border-[#b4a07c] mb-5">
               <div className="flex">
                 <span className="mr-3 text-white text-justify">
-                  {product.info && product.info.length > 0
-                    ? product.info
-                    : "Sin especificaciones"}
+                  {product.info && product.info.length > 0 ? (
+                    <PortableText
+                      value={product.info}
+                      components={RichTextComponents}
+                    />
+                  ) : (
+                    "Sin especificaciones"
+                  )}
                 </span>
               </div>
             </div>
@@ -69,12 +77,14 @@ function SingleProduct({ product, images }: Props) {
 
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map((color) => (
-                      <input
-                        type="image"
-                        className="border-2 pointer-events-none border-white ml-1 rounded-full w-8 h-8 focus:outline-none"
-                        src={urlFor(color.image).url()}
-                        alt={color.name}
-                      />
+                      <div key={product.slug.current}>
+                        <input
+                          type="image"
+                          className="border-2 pointer-events-none border-white ml-1 rounded-full w-8 h-8 focus:outline-none"
+                          src={urlFor(color.image).url()}
+                          alt={color.name}
+                        />
+                      </div>
                     ))}
                   </div>
                 </>
