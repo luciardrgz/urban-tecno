@@ -63,7 +63,7 @@ export default defineType({
     defineField({
       name: "info",
       title: "Especificaciones",
-      type: "text",
+      type: "blockContent",
     }),
     defineField({
       name: "colors",
