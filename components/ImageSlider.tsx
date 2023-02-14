@@ -30,15 +30,15 @@ const ImageCarousel: React.FC<Props> = ({ imageUrls }) => {
   };
 
   return (
-    <div className="relative p-4">
+    <div className="relative h-[50%] p-4 bg-[#1a1a1a]">
       <img
         src={imageUrls[currentIndex]}
-        className="w-full h-96 object-center object-cover"
+        className="h-[100%] mx-auto object-contain"
       />
       {imageUrls.length > 1 ? (
         <>
           <button
-            className="absolute top-[192px] left-0 p-2  bg-white rounded-full"
+            className="absolute top-[50%] -left-2 p-2  bg-white rounded-full"
             onClick={handlePrevious}
           >
             <FontAwesomeIcon
@@ -48,7 +48,7 @@ const ImageCarousel: React.FC<Props> = ({ imageUrls }) => {
             ></FontAwesomeIcon>
           </button>
           <button
-            className="absolute top-[192px] right-0 p-2  bg-white rounded-full"
+            className="absolute top-[50%] -right-2 p-2  bg-white rounded-full"
             onClick={handleNext}
           >
             <FontAwesomeIcon

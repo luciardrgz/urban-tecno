@@ -51,19 +51,19 @@ function BuilderEnd({ components }: Props) {
                   className="mt-4 flex flex-col-2 gap-5 md:gap-0 lg:gap-0 md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full"
                   key={component.slug.current}
                 >
-                  <div className="pb-4 md:pb-8 w-full md:w-40">
+                  <div className="w-20 md:w-20">
                     {component.images && component.images.length > 0 ? (
                       component.images.slice(0, 1).map((image) => (
                         <div key={component.slug.current}>
                           {/*Desktop*/}
                           <img
-                            className="w-full hidden md:block"
+                            className="w-20 h-20 object-cover hidden md:block"
                             src={urlFor(image).url()}
                             alt={component.name}
                           />
                           {/*Mobile*/}
                           <img
-                            className="w-full h-20 object-cover md:hidden"
+                            className="w-20 h-20 object-cover md:hidden"
                             src={urlFor(image).url()}
                             alt={component.name}
                           />
@@ -91,9 +91,14 @@ function BuilderEnd({ components }: Props) {
 
                   <div className="border-b border-[#b4a07c] md:border-[#9c9c9c] lg:border-[#9c9c9c] md:flex-row flex-col flex items-start w-full pb-2 md:pb-8 lg:pb-8 space-y-4 md:space-y-0">
                     <div className="w-full lg:w-[500%] flex flex-col justify-start items-start space-y-2">
-                      <h3 className="text-base md:text-lg lg:text-lg font-semibold leading-6 text-white">
+                      <a
+                        className="text-base md:text-lg lg:text-lg font-semibold leading-6 text-white hover:text-[#b4a07c] hover:no-underline"
+                        href={`/product/slug/${component.slug.current}`}
+                        target="_blank"
+                        title="Ver especificaciones"
+                      >
                         {component.name}
-                      </h3>
+                      </a>
 
                       <span className="text-white">
                         {component.category.name}
