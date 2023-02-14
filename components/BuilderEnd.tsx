@@ -105,7 +105,7 @@ function BuilderEnd({ components }: Props) {
                       </span>
 
                       <div className="flex justify-start md:justify-end lg:justify-end space-x-8 items-start w-full">
-                        <p className="text-base -mt-10 xl:text-lg font-semibold text-white">
+                        <p className="text-base md:-mt-10 lg:-mt-10 xl:text-lg font-semibold text-white">
                           ${component.price}
                         </p>
                       </div>
