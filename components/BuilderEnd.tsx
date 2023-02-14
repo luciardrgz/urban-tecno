@@ -103,12 +103,12 @@ function BuilderEnd({ components }: Props) {
                       <span className="text-white">
                         {component.category.name}
                       </span>
-                    </div>
 
-                    <div className="flex justify-start md:justify-end lg:justify-end space-x-8 items-start w-full">
-                      <p className="text-base -mt-3 xl:text-lg font-semibold text-white">
-                        ${component.price}
-                      </p>
+                      <div className="flex justify-start md:justify-end lg:justify-end space-x-8 items-start w-full">
+                        <p className="text-base -mt-10 xl:text-lg font-semibold text-white">
+                          ${component.price}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

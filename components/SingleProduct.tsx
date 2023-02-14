@@ -17,7 +17,7 @@ function SingleProduct({ product }: Props) {
   return (
     <div className="py-6 sm:py-8 lg:py-12 min-h-screen">
       <div className="max-w-screen-xl px-4 md:px-8 mx-auto">
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="md:grid lg:grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {images && images.length > 0 ? (
             <ImageSlider imageUrls={images}></ImageSlider>
           ) : (
@@ -29,7 +29,7 @@ function SingleProduct({ product }: Props) {
             ></Image>
           )}
 
-          <div className="md:py-8">
+          <div className="mt-5 md:mt-0 lg:mt-0 md:py-8 lg:py-8 ">
             <div className="mb-2 md:mb-3">
               <span className="inline-block text-[#5e5e5e] mb-0.5">
                 {product.category.name}
@@ -76,7 +76,7 @@ function SingleProduct({ product }: Props) {
 
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map((color) => (
-                      <div key={product.slug.current}>
+                      <div key={color.name}>
                         <input
                           type="image"
                           className="border-2 pointer-events-none border-white ml-1 rounded-full w-8 h-8 focus:outline-none"

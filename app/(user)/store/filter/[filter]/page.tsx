@@ -28,9 +28,10 @@ async function Product({ params: { filter } }: Props) {
   return (
     <>
       <section className="text-gray-400 body-font p-2 text-center min-h-screen">
-        <div className="container px-5 mx-auto">
-          <SearchFilters></SearchFilters> <Store allProducts={products} />
+        <div className="container px-5 mx-auto mb-8">
+          <SearchFilters></SearchFilters>
         </div>
+        <Store allProducts={products} />
       </section>
     </>
   );
