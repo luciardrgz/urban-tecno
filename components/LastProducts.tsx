@@ -88,7 +88,7 @@ function LastProducts() {
                             className="text-[#574f3d] hover:text-[#b4a07c] hover:no-underline lg:text-lg font-bold transition duration-100"
                           >
                             {product.name.length > 20
-                              ? `${product.name.substring(0, 20)}...`
+                              ? `${product.name.substring(0, 15)}...`
                               : product.name}
                           </a>
 
