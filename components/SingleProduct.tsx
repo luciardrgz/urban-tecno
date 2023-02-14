@@ -26,7 +26,6 @@ function SingleProduct({ product }: Props) {
               loading="eager"
               priority={true}
               alt={product.name}
-              className="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
             ></Image>
           )}
 
