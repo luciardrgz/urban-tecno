@@ -7,7 +7,7 @@ function Footer() {
       <div className="flex justify-center text-center gap-2">
         <a
           href="https://www.instagram.com/full.tecno.mdq/"
-          className="text-[#666666] hover:text-[#b4a07c] mt-4"
+          className="text-[#666666] hover:text-[#b4a07c] mt-4 transition"
         >
           <FontAwesomeIcon
             icon={faInstagram}
@@ -17,12 +17,17 @@ function Footer() {
         </a>
         <a
           href="https://wa.me/5492236020937"
-          className="text-[#666666] hover:text-[#b4a07c] mt-4"
+          className="text-[#666666] hover:text-[#b4a07c] mt-4 transition"
         >
           <FontAwesomeIcon icon={faWhatsapp} width={"1.5em"} height={"1.5em"} />
         </a>
       </div>
-      <div className="text-[#666666]">© 2023 - Full Tecno</div>
+      <div>
+        <a href="https://www.linkedin.com/in/luciardrgz/" title="LinkedIn del desarrollador" target="_blank" rel="noreferrer" className="mt- text-[#666666] hover:no-underline hover:text-white transition">
+            luciardrgz | 2023
+          </a>
+      </div>
+      
     </footer>
   );
 }

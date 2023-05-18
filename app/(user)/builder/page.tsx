@@ -92,38 +92,45 @@ function Builder() {
                     <div key={product.slug.current}>
                       {product.slug.current && (
                         <div className="flex flex-col">
-                          <div className="group h-40 md:h-80 lg:h-80 block rounded-lg mb-2 lg:mb-3">
-                            <input
-                              type="checkbox"
-                              id={product.slug.current}
-                              name={product.slug.current}
-                              checked={product === currentSelectedComponent}
-                              onChange={(e) => {
-                                setCurrentSelectedComponent(
-                                  e.target.checked ? product : null
-                                );
-                              }}
-                            />
+                          <div className="group h-40 md:h-80 lg:h-80 block rounded-lg mb-2 lg:mb-3 relative">
+  <input
+    type="checkbox"
+    id={product.slug.current}
+    name={product.slug.current}
+    checked={product === currentSelectedComponent}
+    onChange={(e) => {
+      setCurrentSelectedComponent(e.target.checked ? product : null);
+    }}
+    className="absolute opacity-0 h-full w-full cursor-pointer"
+  />
 
-                            <label htmlFor={product.slug.current}>
-                              {product.images && product.images.length > 0 ? (
-                                <img
-                                  src={urlFor(product.images[0]).url()}
-                                  loading="eager"
-                                  alt={product.name}
-                                  className="w-full h-full object-cover object-center rounded-lg group-hover:scale-110 transition duration-200"
-                                />
-                              ) : (
-                                <Image
-                                  src={noImg}
-                                  loading="eager"
-                                  priority={true}
-                                  alt={product.name}
-                                  className="w-full h-full object-cover object-center rounded-lg group-hover:scale-110 transition duration-200"
-                                ></Image>
-                              )}
-                            </label>
-                          </div>
+  <label
+    htmlFor={product.slug.current}
+    className="relative"
+  >
+    {product.images && product.images.length > 0 ? (
+      <img
+        src={urlFor(product.images[0]).url()}
+        loading="eager"
+        alt={product.name}
+        className={`w-full h-full object-cover object-center rounded-lg group-hover:scale-110 transition duration-200 border-8 border-solid ${
+          product === currentSelectedComponent ?  "border-[#b4a07c] shadow-lg shadow-[#b4a07c]" : ""
+        }`}
+      />
+    ) : (
+      <Image
+        src={noImg}
+        loading="eager"
+        priority={true}
+        alt={product.name}
+        className={`w-full h-full object-cover object-center rounded-lg group-hover:scale-110 transition duration-200 border-8 border-solid ${
+          product === currentSelectedComponent ?  "border-[#b4a07c] shadow-lg shadow-[#b4a07c]" : ""
+        }`}
+      />
+    )}
+  </label>
+</div>
+
 
                           <div className="info mt-4">
                             <span className="text-[#b4a07c] lg:text-lg font-bold hover:gray-800 transition duration-100">
