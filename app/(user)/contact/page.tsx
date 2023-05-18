@@ -19,7 +19,7 @@ function Contact() {
       <h1 className="text-xl font-semibold text-center text-white md:text-2xl lg:text-2xl ">
         Contactate con
       </h1>
-      <h1 className="glow"> Full Tecno</h1>
+      <h1 className="glow"> Urban Tecno</h1>
       <div className="grid grid-cols-1 gap-8 mt-2 md:mt-8 lg:mt-8 md:grid-cols-2 xl:grid-cols-3">
         <div className={styles.card}>
           <span className="inline-block p-2 rounded-full text-black bg-[#b4a07c]">
@@ -32,7 +32,7 @@ function Contact() {
           </span>
           <h1 className={styles.cardTitle}>Dónde estamos</h1>
           <p className={styles.cardDescription}>
-            Güemes 3255, Mar del Plata,
+            Santa Fe 1865, Mar del Plata,
             <br />
             Buenos Aires, Argentina
           </p>
@@ -81,7 +81,7 @@ function Contact() {
             brevedad.
           </p>
           <a
-            href="https://wa.me/5492236020937"
+            href="https://wa.me/5492234660666"
             target="_blank"
             className="flex items-center -mx-1 text-sm text-[#b4a07c] transition-colors duration-300 transform  hover:none hover:text-[#f1ddb7]"
           >

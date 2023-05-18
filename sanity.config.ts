@@ -13,7 +13,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 export default defineConfig({
   basePath: "/studio",
   name: "Full_Tecno_Studio",
-  title: "Panel Full Tecno",
+  title: "Panel Urban Tecno",
 
   projectId,
   dataset,

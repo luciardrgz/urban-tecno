@@ -20,7 +20,7 @@ function Hero() {
         <h2 className="text-center text-lg mt-10 font-semibold">
           Bienvenido a
         </h2>
-        <h2 className="glow">Full Tecno</h2>
+        <h2 className="glow">Urban Tecno</h2>
       </div>
 
       <div className="justify-center pt-5 grid gap-12 row-gap-8 lg:grid-cols-3">
