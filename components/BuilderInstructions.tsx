@@ -20,9 +20,8 @@ const BuilderInstructions: React.FC<{ changeIteratorValue: () => void }> = ({
               </h2>
 
               <p className="hidden text-white/90 text-lg sm:mt-4 sm:block">
-                Elegí los componentes que mejor se ajusten a tus necesidades,
-                <br />
-                el generador de Full Tecno te arma el presupuesto.
+                Elegí los componentes que mejor se ajusten a tus necesidades, el
+                generador de Urban Tecno te arma el presupuesto.
                 <br /> <br />
                 Podés seleccionar un componente de cada categoría y saltear
                 alguno en caso de que no desees adquirirlo.
@@ -32,7 +31,7 @@ const BuilderInstructions: React.FC<{ changeIteratorValue: () => void }> = ({
 
               <p className="text-white/90 sm:mt-4 sm:hidden">
                 Elegí los componentes que mejor se ajusten a tus necesidades, el
-                generador de Full Tecno te arma el presupuesto.
+                generador de Urban Tecno te arma el presupuesto.
                 <br /> <br />
                 Podés seleccionar un componente de cada categoría y saltear
                 alguno en caso de que no desees adquirirlo.
