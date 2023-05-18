@@ -106,13 +106,14 @@ function Navbar() {
   return (
     <nav className="navbar" id="navbar-dropdown">
       <div className="container flex flex-wrap justify-between ">
-        <Image
+        <a href="/"><Image
           className={"object-center p-2 w-40 ml-4"}
           src={logo}
           alt="logo"
           loading="eager"
           priority={true}
-        ></Image>
+        ></Image></a>
+        
 
         <button
           data-collapse-toggle="navbar-dropdown"
