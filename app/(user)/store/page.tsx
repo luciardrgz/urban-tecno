@@ -1,4 +1,4 @@
-import { previewData } from "next/headers";
+import { draftMode } from 'next/headers';
 import { groq } from "next-sanity";
 import { client } from "../../../lib/sanity.client";
 import PreviewSuspense from "../../../components/PreviewSuspense";
@@ -18,7 +18,7 @@ const query = groq`
 export const revalidate = 30; // revalidate this page every 60 seconds
 
 export default async function StoreList() {
-  if (previewData()) {
+  if (draftMode()) {
     return (
       <PreviewSuspense
         fallback={
