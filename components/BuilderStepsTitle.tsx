@@ -10,7 +10,7 @@ function BuilderSteps({ components }: Props) {
       ) : null}
       <br />
 
-      <p className="text-[#9c9c9c] w-[90%] md:w-full lg:w-full text-justify md:text-start lg:text-start mt-2 md:mt-2 lg:mt-2 leading-5  md:leading-normal lg:leading-normal text-sm md:text-base lg:text-base font-semibold ">
+      <p className="text-[#9c9c9c] w-full text-left md:text-start lg:text-start mt-2 md:mt-2 lg:mt-2 leading-5  md:leading-normal lg:leading-normal text-sm md:text-base lg:text-base font-semibold ">
         {components[0].category.description &&
         components[0].category.description.length > 0 ? (
           components[0].category.description
