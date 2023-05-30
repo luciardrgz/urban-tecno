@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
         Raleway: ["Raleway", "sans-serif"],
       },
+      boxShadow: {
+        custom: '0 0 10px 0 rgba(180, 160, 124, 0.2)',
+      },
     },
     sm: "0.8rem",
     base: "1rem",
