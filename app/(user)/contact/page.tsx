@@ -2,6 +2,7 @@ import { faLocationDot, faClock } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import "../../../components/css/CompanyName.css";
 import ContactCard from "../../../components/ContactCard";
+import Map from "../../../components/Map";
 
 function Contact() {
   return (
@@ -10,23 +11,17 @@ function Contact() {
         Contactate con
       </h1>
       <h1 className="glow"> Urban Tecno</h1>
-      <div className="grid grid-cols-1 gap-8 mt-2 md:mt-8 lg:mt-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 mt-2 md:mt-8 lg:mt-8 lg:grid-cols-3">
         <ContactCard
           title={"Dónde estamos"}
-          description={[
-            "Santa Fe 1865, Mar del Plata,",
-            "Buenos Aires, Argentina",
-          ]}
+          description={["Santa Fe 1875, Mar del Plata", "Buenos Aires, Argentina"]}
           icon={faLocationDot}
           link={"https://goo.gl/maps/76x7HchEEheZiEaX8"}
-          linkInfo="Ver en el mapa"
+          linkInfo="Ver en Google Maps"
         />
         <ContactCard
-          title={"Nuestros horarios"}
-          description={[
-            "Lunes a Sábados de 10:30 a 20 hs",
-            "Domingos de 16 a 20 hs",
-          ]}
+          title={"Nuestro horario"}
+          description={["Todos los días", "de 10:00 a 20:00 hs."]}
           icon={faClock}
           link={""}
           linkInfo={""}
@@ -34,13 +29,16 @@ function Contact() {
         <ContactCard
           title={"Escribinos"}
           description={[
-            "Hacenos tu consulta y te",
-            "responderemos a la brevedad!",
+            "Tenés una consulta?",
+            "No dudes en decirnos!",
           ]}
           icon={faWhatsapp}
-          link={"https://wa.me/5492234660666"}
+          link={"https://wa.me/5492236228659"}
           linkInfo={"Enviar WhatsApp"}
         />
+      </div>
+      <div className="mt-10">
+        <Map />
       </div>
     </div>
   );

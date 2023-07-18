@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {
-  card: "flex flex-col h-auto items-center p-4 space-y-3 text-center bg-[#1a1a1a] rounded-xl",
-  cardTitle: "text-xl md:text-2xl lg:text-2xl font-semibold text-[#b4a07c]",
-  cardDescription: "text-lg text-gray-300 max-sm:text-md",
+  card: "flex flex-col items-center justify-center p-4 text-center bg-[#1a1a1a] rounded-xl",
+  cardTitle: "mt-2 text-xl md:text-2xl lg:text-2xl font-semibold text-[#b4a07c]",
+  cardDescription: "text-lg my-2 text-gray-300 max-sm:text-md leading-tight",
 };
 
 function ContactCard({
