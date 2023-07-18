@@ -19,10 +19,18 @@ export default async function StoreList() {
   return (
     <>
       <section className="text-gray-400 body-font p-2 text-center min-h-screen">
-        <div className="container px-5 mx-auto mb-8">
-          <SearchFilters></SearchFilters>
-        </div>
-        <Store allProducts={products} />
+        {products && products.length > 0 ? (
+          <>
+            <div className="container px-5 mx-auto mb-8">
+              <SearchFilters></SearchFilters>
+            </div>
+            <Store allProducts={products} />
+          </>
+        ) : (
+          <p className="mt-5 text-lg">
+            Lo sentimos, aún no tenemos productos publicados :(
+          </p>
+        )}
       </section>
     </>
   );
