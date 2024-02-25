@@ -1,8 +1,8 @@
-# <img src="https://i.ibb.co/PjTWH2R/logo.png" height="40px">
+# <img src="https://i.ibb.co/5FH0B6z/logo.png" height="40px">
 
-[Website](https://full-tecno-luciardrgz.vercel.app/) with integrated CMS for [Full Tecno](https://www.instagram.com/full.tecno.mdq/), tech products store in Mar del Plata, Argentina.
+[Website](https://urbantecnomdq.com/) with integrated CMS for [Urban Tecno](https://www.instagram.com/urbantecno.mdq/), tech products store in Mar del Plata, Argentina.
 
-<h6><i><a href="https://full-tecno-luciardrgz.vercel.app/">Sitio Web</a> con CMS integrado para <a href="https://www.instagram.com/full.tecno.mdq/">Full Tecno</a>, tienda de productos tecnológicos de Mar del Plata, Argentina. </i></h6>
+<h6><i><a href="https://urbantecnomdq.com/">Sitio Web</a> con CMS integrado para <a href="https://www.instagram.com/urbantecno.mdq/">Urban Tecno</a>, tienda de productos tecnológicos de Mar del Plata, Argentina. </i></h6>
 
 ## Technologies used
 <img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*mn6bOs7s6Qbao15PMNRyOA.png" height="20px"> [TypeScript](https://www.typescriptlang.org/) as a language. <h6><i>TypeScript como lenguaje.</i></h6><br/> 
